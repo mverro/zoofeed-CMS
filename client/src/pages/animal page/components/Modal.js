@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { detailData } from '../../../axios/animal';
+import { readData } from '../../../axios/food';
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, id }) => {
+    const [foods, setFoods] = useState([]);
+    const [allFood, setAllFood] = useState([]);
+    const [detail, setDetail] = useState({
+        data: {},
+        classTypeData: {},
+        habitatData: {},
+    });
+
+    const getAnimalDetail = () => {
+        detailData(+id, (result) => {
+            setDetail({
+                data: result.resultAF,
+                classTypeData: result.classTypeData[0],
+                habitatData: result.habitatData[0],
+            });
+            setFoods(result.resultAF.foods);
+        });
+        readData((result) => setAllFood(result));
+    };
+
+    useEffect(() => {
+        getAnimalDetail();
+    }, []);
 
     return (
         <>
@@ -34,7 +59,7 @@ const Modal = ({ showModal, setShowModal }) => {
                                             src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                                             alt="user photo"
                                         />
-                                        <p className='text-lg font-semibold'>Nama Hewan</p>
+                                        <p className='text-lg font-semibold'>{detail.data.name}</p>
                                     </div>
                                     <div className='bg-white h-auto w-2/3 p-3 shadow-lg rounded-md'>
                                         <div className='mb-3'>
