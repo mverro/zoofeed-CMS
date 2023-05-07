@@ -1,9 +1,31 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
+    const [theme, setTheme] = useState("light")
     const menuRef = useRef();
     const imgRef = useRef();
+
+    useEffect(() => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme])
+
+    const handleThemeSwitch = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    }
+
 
     window.addEventListener('click', (e) => {
         if (e.target !== menuRef.current && e.target !== imgRef.current) {
@@ -17,6 +39,9 @@ const NavBar = () => {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" style={{ fontFamily: "Zoo", fontSize: "3rem", color: "white" }}>Zoo Feed</span>
                     <div className="flex items-center md:order-2">
+                        <div onClick={handleThemeSwitch} className='bg-slate-600 rounded-full p-2 cursor-pointer mr-3'>
+                            <p className='text-white'>DARK</p>
+                        </div>
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             <img
