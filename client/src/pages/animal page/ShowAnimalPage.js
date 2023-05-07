@@ -7,6 +7,7 @@ const ShowAnimalPage = () => {
     const [items, setItems] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [id, setId] = useState(0);
+    const [detailCheck, setdetailCheck] = useState(false)
 
     useEffect(() => {
         readDataAnimal(result => setItems(result));
@@ -17,6 +18,7 @@ const ShowAnimalPage = () => {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 id={id}
+                detailCheck={detailCheck}
             />
             <div className='h-[64px]'></div>
             <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
@@ -65,6 +67,7 @@ const ShowAnimalPage = () => {
                                                         onClick={() => {
                                                             setShowModal(true);
                                                             setId(item.id)
+                                                            setdetailCheck(!detailCheck);
                                                         }}
                                                     >
                                                         <FaEye size={23} />
