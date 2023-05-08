@@ -23,9 +23,9 @@ const ShowAnimalPage = () => {
             <div className='h-[64px]'></div>
             <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
                 {/* Search Bar */}
-                <div className='border-2 border-red-400 flex flex-wrap justify-between py-5'>
+                <div className=' flex flex-wrap justify-between py-5'>
                     {/* Search */}
-                    <div className="container w-80 border-2 border-blue-200">
+                    <div className="container w-80">
                         <form className="flex items-center">
                             <label htmlFor="simple-search" className="sr-only">Search</label>
                             <div className="relative w-full">
