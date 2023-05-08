@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
@@ -35,19 +36,24 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="z-20 bg-[#019267] border-gray-200 dark:bg-gray-900 fixed w-full">
+            <nav className="z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" style={{ fontFamily: "Zoo", fontSize: "3rem", color: "white" }}>Zoo Feed</span>
                     <div className="flex items-center md:order-2">
-                        <div onClick={handleThemeSwitch} className='bg-slate-600 rounded-full p-2 cursor-pointer mr-3'>
-                            <p className='text-white'>DARK</p>
+                        {/* Dark mode button */}
+                        <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
+                            {
+                                theme === 'light'
+                                    ? <FaMoon color='#3C4048' />
+                                    : <FaSun color='#CFD2CF' />
+                            }
                         </div>
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             <img
                                 ref={imgRef}
                                 onClick={() => setOpen(!open)}
-                                className="w-8 h-8 rounded-full object-cover"
+                                className="w-10 h-10 rounded-full object-cover"
                                 src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                                 alt="user photo"
                             />
