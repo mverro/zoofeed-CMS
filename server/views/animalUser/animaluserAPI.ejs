@@ -1,0 +1,39 @@
+<h4><li>Animal User Juction</li></h4>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Method </th>
+                <th > Link </th>
+                <th> Function </th>
+            </tr>
+            
+        </thead>
+           
+        <tbody><tr>
+          <td>GET (AUTH)</td>
+          <td>
+            <a href="api/animaluser/">api/animaluser/</a>
+          </td>
+          <td class="comment">// get all table animal-user</td>
+        </tr>
+
+        <tr>
+          <td>POST  (AUTH)</td>
+          <td>
+            <a >/api/animaluser/add/id</a>
+          </td>
+          <td class="comment">// add new relation between animal == user by params.id : animalId <br>  jika (Auth user = zookeper), maka menambah relasi zookeper pada animal <br> jika (Auth user = visitor) maka akan menambah like</td>
+        </tr>
+
+        <tr>
+          <td>DELETE  (AUTH)</td>
+          <td>
+            <a >/api/animaluser/delete/id</a>
+          </td>
+          <td class="comment">// delete relation between animal === user by params.id : animalId <br> jika (Auth user = zookeper), melepas kepengurusan zookeper pada animal. <br> jika (Auth = visitor), maka unlike pada animal </td>
+        </tr>
+        
+      </tbody></table>
+
+    
+    </div>
