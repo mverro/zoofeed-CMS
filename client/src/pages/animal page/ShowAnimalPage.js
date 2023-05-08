@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { readDataAnimal } from '../../axios/animal'
-import { FaEdit, FaTrash, FaEye } from 'react-icons/fa'
-import Modal from './components/Modal'
+import React, { useState, useEffect } from 'react';
+import { readDataAnimal } from '../../axios/animal';
+import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
+import ModalDetail from './components/ModalDetail';
+import ModalAdd from './components/ModalAdd';
 
 const ShowAnimalPage = () => {
     const [items, setItems] = useState([]);
-    const [showModal, setShowModal] = useState(false);
+    const [showModalDetail, setShowModalDetail] = useState(false);
+    const [showModalAdd, setShowModalAdd] = useState(false);
     const [id, setId] = useState(0);
     const [detailCheck, setdetailCheck] = useState(false)
 
@@ -14,14 +16,18 @@ const ShowAnimalPage = () => {
     }, [items.name])
     return (
         <>
-            <Modal
-                showModal={showModal}
-                setShowModal={setShowModal}
-                id={id}
-                detailCheck={detailCheck}
-            />
             <div className='h-[64px]'></div>
-            <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
+            <div className="p-4 sm:ml-64 dark:bg-gray-900">
+                <ModalDetail
+                    showModalDetail={showModalDetail}
+                    setShowModalDetail={setShowModalDetail}
+                    id={id}
+                    detailCheck={detailCheck}
+                />
+                <ModalAdd
+                    showModalAdd={showModalAdd}
+                    setShowModalAdd={setShowModalAdd}
+                />
                 {/* Search Bar */}
                 <div className=' flex flex-wrap justify-between py-5'>
                     {/* Search */}
@@ -37,7 +43,7 @@ const ShowAnimalPage = () => {
                         </form>
                     </div>
                     {/* Button Add */}
-                    <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
+                    <button onClick={() => setShowModalAdd(true)} type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
                 </div>
                 {/* Table */}
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -82,7 +88,7 @@ const ShowAnimalPage = () => {
                                                     <div
                                                         className='cursor-pointer'
                                                         onClick={() => {
-                                                            setShowModal(true);
+                                                            setShowModalDetail(true);
                                                             setId(item.id)
                                                             setdetailCheck(!detailCheck);
                                                         }}
