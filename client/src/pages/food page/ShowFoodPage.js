@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { readData } from '../../axios/food'
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
-const ShowFoodPage = () => {
+const ShowFoodPage = ({ loginStatus }) => {
+    const navigate = useNavigate();
     const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        if (!loginStatus) {
+            navigate('/login')
+        }
+    }, [])
 
     useEffect(() => {
         readData(result => setItems(result));

@@ -6,7 +6,8 @@ import {
     ShowAnimalPage,
     FoodPage,
     ShowFoodPage,
-    LoginPage
+    LoginPage,
+    SignUpPage
 } from '../pages';
 
 const MainContent = ({
@@ -18,14 +19,15 @@ const MainContent = ({
     return (
         <>
             <Routes>
-                <Route path='' element={<HomePage />} />
+                <Route path='' element={<HomePage loginStatus={loginStatus} />} />
                 <Route path='animals' element={<AnimalPage />}>
-                    <Route path='' element={<ShowAnimalPage />}></Route>
+                    <Route path='' element={<ShowAnimalPage loginStatus={loginStatus} />}></Route>
                 </Route>
                 <Route path='foods' element={<FoodPage />}>
-                    <Route path='' element={<ShowFoodPage />} />
+                    <Route path='' element={<ShowFoodPage loginStatus={loginStatus} />} />
                 </Route>
                 <Route path='login' element={<LoginPage loginCbHandler={loginCbHandler} />} />
+                <Route path='register' element={<SignUpPage loginCbHandler={loginCbHandler} />} />
             </Routes>
         </>
     )
