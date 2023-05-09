@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       ticket.belongsToMany(models.cart, { through: models.cartTicket });
-      ticket.hasOne(models.ticketType)
+      ticket.belongsTo(models.ticketType)
     }
   }
   ticket.init({
@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.BOOLEAN,
     stock: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: function (ticket, options) {
+        ticket.status = false;
+      },
+    },
     sequelize,
     modelName: 'ticket',
   });
