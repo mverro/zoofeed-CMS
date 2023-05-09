@@ -9,6 +9,7 @@ const roleRoutes = require("./roleRoutes");
 const userRoutes = require("./userRoutes");
 const cartRoutes = require("./cartRoutes");
 const cartFoodRoutes = require("./cartFoodRoutes");
+const ticketRoute = require("./ticketRoute");
 
 const route = require("express").Router();
 
@@ -23,5 +24,6 @@ route.use("/api/animaluser", animalUserRoutes);
 route.use("/api/role", roleRoutes);
 route.use("/api/cart", cartRoutes);
 route.use("/api/cartfood", cartFoodRoutes);
+route.use("/api/ticket", ticketRoute);
 
 module.exports = route;

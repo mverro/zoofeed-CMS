@@ -88,12 +88,13 @@ class AnimalController {
         const id = +req.params.id;
         const temp = await animal.findByPk(id);
         checkFileUpdate(temp, req);
-        const { name, age, sex, imageUrl, classTypeId, habitatId } = req.body;
+        const { name, age, sex,description, imageUrl, classTypeId, habitatId } = req.body;
         const result = await animal.update(
           {
             name: name,
             age: +age,
             sex: sex,
+            description : description,
             imageUrl: imageUrl,
             classTypeId: classTypeId,
             habitatId: +habitatId,

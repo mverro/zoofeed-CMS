@@ -21,11 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       qty: DataTypes.INTEGER,
     },
     {
-      hooks: {
-        beforeCreate: function (cart, options) {
-          cart.qty = 0;
-        },
-      },
       sequelize,
       modelName: "cart",
     }

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ticketType.hasOne(models.ticket);
+      ticketType.hasMany(models.ticket);
     }
   }
   ticketType.init(
