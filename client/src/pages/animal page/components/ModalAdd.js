@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { createData } from '../../../axios/animal';
 import { getClassType } from '../../../axios/classType';
 import { getHabitat } from '../../../axios/habitat';
+import { Link, useNavigate } from 'react-router-dom'
 
 const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
+    const navigation = useNavigate();
     const [image, setImage] = useState("https://fakeimg.pl/350x200/");
     const [classType, setClassType] = useState([]);
     const [habitat, setHabitat] = useState([]);
@@ -11,6 +13,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
         name: "",
         age: 0,
         sex: "",
+        description: "",
         imageUrl: null,
         classTypeId: 0,
         habitatId: 0,
@@ -23,6 +26,11 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
         setImage(URL.createObjectURL(uploaded));
     }
 
+    const submitHandler = () => {
+        createData(form);
+        navigation('/animals')
+    };
+
     useEffect(() => {
         getClassType((result) => setClassType(result));
     }, []);
@@ -30,9 +38,9 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
     useEffect(() => {
         getHabitat((result) => setHabitat(result));
     }, []);
+
     return (
         <>
-            {/* Main modal */}
             {
                 showModalAdd ?
                     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed pt-20 pb-5 inset-0 z-50 outline-none focus:outline-none">
@@ -50,18 +58,19 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
                                         </h3>
                                     </div>
                                     <form class="space-y-6" action="#">
-                                        <div>
+                                        <div className='mt-5'>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                            <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="animal name" required />
+                                            <input onChange={(e) => setForm({ ...form, name: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="animal name" required />
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                            <input type="text" name="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="animal name" required />
+                                            <input onChange={(e) => setForm({ ...form, age: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="animal age" required />
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sex</label>
                                             <select
-                                                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg shadow-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                onChange={(e) => setForm({ ...form, sex: e.target.value })}
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             >
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -77,7 +86,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
                                             <select
                                                 onClick={(e) => setForm({ ...form, classTypeId: e.target.value })}
                                                 id="countries"
-                                                className="bg-white shadow-md border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             >
                                                 <option selected>Choose Animal Class</option>
                                                 {classType.map((dataClass) => {
@@ -99,7 +108,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
                                             <select
                                                 onClick={(e) => setForm({ ...form, habitatId: e.target.value })}
                                                 id="countries"
-                                                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg shadow-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             >
                                                 <option
                                                     selected
@@ -121,13 +130,13 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd }) => {
                                         </div>
                                         <div class="mb-6">
                                             <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                                            <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                            <input onChange={(e) => setForm({ ...form, description: e.target.value })} type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-                                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" />
+                                            <input onChange={handleUploadChange} class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400" id="file_input" type="file" />
                                         </div>
-                                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Animal</button>
+                                        <button onClick={() => submitHandler()} type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Animal</button>
                                     </form>
                                 </div>
                             </div>

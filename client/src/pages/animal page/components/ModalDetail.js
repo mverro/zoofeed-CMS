@@ -37,10 +37,10 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                     >
                         <div className="relative w-2/3 mx-auto">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-gray-700 outline-none focus:outline-none">
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
+                                    <h3 className="text-3xl font-semibold dark:text-slate-100">
                                         Animal Information
                                     </h3>
                                     <button
@@ -54,42 +54,42 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex">
-                                    <div className='bg-gray-50 h-auto w-[15%] mx-2 shadow-lg rounded-md p-3'>
+                                    <div className='bg-gray-50 dark:bg-slate-800 h-auto w-[15%] mx-2 shadow-lg rounded-md p-3'>
                                         <img
                                             className="w-24 h-24 rounded-lg object-cover"
                                             src={detail.data.imageUrl}
                                         />
-                                        <p className='text-lg font-semibold'>{detail.data.name}</p>
+                                        <p className='text-lg font-semibold dark:text-slate-100'>{detail.data.name}</p>
                                     </div>
-                                    <div className='bg-white h-auto w-[70%] p-3 shadow-lg rounded-md'>
+                                    <div className='bg-white dark:bg-slate-800 h-auto w-[70%] p-3 shadow-lg rounded-md'>
                                         <div className='mb-3'>
-                                            <p className='font-semibold text-lg'>About</p>
-                                            <p className='font-light text-slate-700 text-[16px]'>{detail.data.description}</p>
+                                            <p className='dark:text-slate-100 font-semibold text-lg'>About</p>
+                                            <p className='dark:text-slate-200 font-light text-slate-700 text-[16px]'>{detail.data.description}</p>
                                         </div>
                                         <div className='flex flex-wrap mb-3'>
                                             <div className='w-1/2'>
-                                                <p className='font-semibold text-lg'>Age</p>
-                                                <p className='font-normal text-slate-700 text-base'>{detail.data.age}</p>
+                                                <p className=' dark:text-slate-100 font-semibold text-lg'>Age</p>
+                                                <p className='font-normal text-slate-700 text-base dark:text-slate-200'>{detail.data.age}</p>
                                             </div>
                                             <div className='w-1/2'>
-                                                <p className='font-semibold text-lg'>Sex</p>
-                                                <p className='font-normal text-slate-700 text-base'>{detail.data.sex}</p>
+                                                <p className='dark:text-slate-100 font-semibold text-lg'>Sex</p>
+                                                <p className='font-normal text-slate-700 dark:text-slate-200 text-base'>{detail.data.sex}</p>
                                             </div>
                                         </div>
                                         <div className='flex flex-wrap'>
                                             <div className='w-1/2'>
-                                                <p className='font-semibold text-lg'>Class</p>
-                                                <p className='font-normal text-slate-700 text-base'>{detail.classTypeData.name}</p>
+                                                <p className='dark:text-slate-100 font-semibold text-lg'>Class</p>
+                                                <p className='font-normal text-slate-700 dark:text-slate-200 text-base'>{detail.classTypeData.name}</p>
                                             </div>
                                             <div className='w-1/2'>
-                                                <p className='font-semibold text-lg'>Habitat</p>
-                                                <p className='font-normal text-slate-700 text-base'>{detail.habitatData.name}</p>
+                                                <p className='dark:text-slate-100 font-semibold text-lg'>Habitat</p>
+                                                <p className='font-normal text-slate-700 dark:text-slate-200 text-base'>{detail.habitatData.name}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='h-auto w-[15%] mx-2 shadow-lg rounded-md p-3'>
+                                    <div className='h-auto w-[15%] mx-2 shadow-lg rounded-md p-3 dark:bg-slate-800'>
                                         <div className='flex flex-wrap justify-between items-start'>
-                                            <p className='font-semibold text-lg mb-3 self-center'>Consume</p>
+                                            <p className='dark:text-slate-100 font-semibold text-lg mb-3 self-center'>Consume</p>
                                             <div className='cursor-pointer hover:border-green-500 border-[2px] p-1 border-green-600 rounded-md'>
                                                 <FaPlus color='green' />
                                             </div>
@@ -106,7 +106,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                                             />
                                                         )
                                                     })
-                                                    : <p>No Foods</p>
+                                                    : <p className='dark:text-slate-200'>No Foods</p>
                                             }
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                 {/*footer*/}
                                 <div className="flex items-center justify-end px-5 rounded-b">
                                     <button
-                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        className="bg-emerald-500 dark:bg-green-600 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
                                         onClick={() => setShowModalDetail(false)}
                                     >
