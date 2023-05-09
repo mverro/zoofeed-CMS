@@ -5,10 +5,16 @@ import {
     AnimalPage,
     ShowAnimalPage,
     FoodPage,
-    ShowFoodPage
+    ShowFoodPage,
+    LoginPage
 } from '../pages';
 
-const MainContent = () => {
+const MainContent = ({
+    loginStatus,
+    loginCbHandler,
+    userData,
+    userCheck,
+    setUserCheck, }) => {
     return (
         <>
             <Routes>
@@ -19,6 +25,7 @@ const MainContent = () => {
                 <Route path='foods' element={<FoodPage />}>
                     <Route path='' element={<ShowFoodPage />} />
                 </Route>
+                <Route path='login' element={<LoginPage loginCbHandler={loginCbHandler} />} />
             </Routes>
         </>
     )

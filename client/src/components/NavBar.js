@@ -1,11 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ loginCbHandler }) => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [theme, setTheme] = useState("light")
     const menuRef = useRef();
     const imgRef = useRef();
+
+    const logoutHandler = () => {
+        localStorage.clear()
+        loginCbHandler(false)
+        navigate('/login')
+        window.location.reload()
+    }
 
     useEffect(() => {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -36,7 +45,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full">
+            <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" style={{ fontFamily: "Zoo", fontSize: "3rem", color: "white" }}>Zoo Feed</span>
                     <div className="flex items-center md:order-2">
@@ -76,7 +85,7 @@ const NavBar = () => {
                                         <li>
                                             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                                         </li>
-                                        <li>
+                                        <li onClick={() => logoutHandler()}>
                                             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                                         </li>
                                     </ul>
