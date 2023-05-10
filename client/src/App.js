@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <div className={loginStatus ? '' : 'hidden'}>
-        <NavBar loginCbHandler={loginCbHandler} />
+        <NavBar loginCbHandler={loginCbHandler} userData={userData} />
         <SideBar />
       </div>
       <MainContent

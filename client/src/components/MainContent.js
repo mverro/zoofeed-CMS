@@ -26,7 +26,7 @@ const MainContent = ({
                 <Route path='foods' element={<FoodPage />}>
                     <Route path='' element={<ShowFoodPage loginStatus={loginStatus} />} />
                 </Route>
-                <Route path='login' element={<LoginPage loginCbHandler={loginCbHandler} />} />
+                <Route path='login' element={<LoginPage loginStatus={loginStatus} loginCbHandler={loginCbHandler} />} />
                 <Route path='register' element={<SignUpPage loginCbHandler={loginCbHandler} />} />
             </Routes>
         </>

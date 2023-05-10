@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const NavBar = ({ loginCbHandler }) => {
+const NavBar = ({ loginCbHandler, userData }) => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [theme, setTheme] = useState("light")
@@ -13,7 +13,6 @@ const NavBar = ({ loginCbHandler }) => {
         localStorage.clear()
         loginCbHandler(false)
         navigate('/login')
-        window.location.reload()
     }
 
     useEffect(() => {
@@ -72,8 +71,8 @@ const NavBar = ({ loginCbHandler }) => {
                             open && (
                                 <div ref={menuRef} className="z-50 fixed right-3 top-12 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                                     <div className="px-4 py-3">
-                                        <span className="block text-sm text-gray-900 dark:text-white">Ryan</span>
-                                        <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">name@mail.com</span>
+                                        <span className="block text-sm text-gray-900 dark:text-white">{userData.name}</span>
+                                        <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{userData.email}</span>
                                     </div>
                                     <ul className="py-2" aria-labelledby="user-menu-button">
                                         <li>

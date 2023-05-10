@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { login } from '../../axios/user'
 import { Link, useNavigate } from 'react-router-dom'
 
-const LoginPage = ({ loginCbHandler }) => {
+const LoginPage = ({ loginCbHandler, loginStatus }) => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: '',
         password: '',
     })
+
+    // useEffect(() => {
+    //     if (loginStatus === true) {
+    //         navigate('/');
+    //     }
+    // }, [loginStatus])
 
     const submitHandler = () => {
         login(form, loginCbHandler, false);

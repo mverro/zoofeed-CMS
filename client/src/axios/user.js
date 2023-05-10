@@ -16,7 +16,7 @@ const login = async (datas, cb, regis) => {
 
         const access_token = result.data.access_token;
         localStorage.setItem('access_token', access_token);
-        cb(true)
+        await cb(true)
 
         if (!isRegis) {
             window.location.reload();
