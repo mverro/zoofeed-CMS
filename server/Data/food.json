@@ -1,6 +1,5 @@
  [
 	{
-		"id" : 1,
 		"name" : "Udang",
 		"type" : "Daging",
 		"price" : 20000,
@@ -10,7 +9,6 @@
 		"imageUrl" : "http://localhost:3000/images/udang.jpg"
 	},
 	{
-		"id" : 2,
 		"name" : "Rambutan",
 		"type" : "Buah-buahan",
 		"price" : 10000,
@@ -20,7 +18,6 @@
 		"imageUrl" : "http://localhost:3000/images/rambutan.jpg"
 	},
 	{
-		"id" : 3,
 		"name" : "Pisang",
 		"type" : "Buah-buahan",
 		"price" : 10000,
@@ -30,7 +27,6 @@
 		"imageUrl" : "http://localhost:3000/images/pisang.jpg"
 	},
 	{
-		"id" : 4,
 		"name" : "Kelapa",
 		"type" : "Buah-buahan",
 		"price" : 15000,
@@ -40,7 +36,6 @@
 		"imageUrl" : "http://localhost:3000/images/kelapa.jpg"
 	},
 	{
-		"id" : 5,
 		"name" : "Daging Ayam",
 		"type" : "Daging",
 		"price" : 20000,
@@ -50,7 +45,6 @@
 		"imageUrl" : "http://localhost:3000/images/ayam.jpg"
 	},
 	{
-		"id" : 6,
 		"name" : "Mangga",
 		"type" : "Buah-buahan",
 		"price" : 10000,
@@ -60,7 +54,6 @@
 		"imageUrl" : "http://localhost:3000/images/mangga.jpg"
 	},
 	{
-		"id" : 7,
 		"name" : "Daging Mentah",
 		"type" : "Daging",
 		"price" : 15000,
@@ -70,7 +63,6 @@
 		"imageUrl" : "http://localhost:3000/images/daging_sapi.png"
 	},
 	{
-		"id" : 8,
 		"name" : "Apel malang",
 		"type" : "Buah-buahan",
 		"price" : 10000,

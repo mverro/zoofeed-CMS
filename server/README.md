@@ -5,3 +5,5 @@ npx sequelize-cli model:generate --name ticket --attributes ticketTypeId:integer
 npx sequelize-cli model:generate --name ticketType --attributes category:string,price:integer
 npx sequelize-cli model:generate --name order --attributes cartId:integer
 npx sequelize-cli model:generate --name payment --attributes userId:integer,orderId:integer,methode:string,status:boolean
+
+npx sequelize-cli model:generate --name userTicket --attributes userId:integer,ticketTypeId:integer,barcode:string,status:boolean

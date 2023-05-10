@@ -30,11 +30,12 @@ class AnimalController {
     try {
       const user = req.userData;
       if (user.roleId === 2) {
-        const { name, age, sex, imageUrl, classTypeId, habitatId } = req.body;
+        const { name, age, sex, imageUrl,description, classTypeId, habitatId } = req.body;
         let result = await animal.create({
           name: name,
           age: +age,
           sex: sex,
+          description : description,
           imageUrl: imageUrl,
           classTypeId: +classTypeId,
           habitatId: +habitatId,

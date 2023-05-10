@@ -9,7 +9,10 @@ const roleRoutes = require("./roleRoutes");
 const userRoutes = require("./userRoutes");
 const cartRoutes = require("./cartRoutes");
 const cartFoodRoutes = require("./cartFoodRoutes");
-const ticketRoute = require("./ticketRoute");
+const ticketRoutes = require("./ticketRoutes");
+const cartTicketRoutes = require("./cartTicketRoutes");
+const orderRoutes = require("./orderRoutes");
+const paymentRoutes = require("./paymentRoutes");
 
 const route = require("express").Router();
 
@@ -24,6 +27,9 @@ route.use("/api/animaluser", animalUserRoutes);
 route.use("/api/role", roleRoutes);
 route.use("/api/cart", cartRoutes);
 route.use("/api/cartfood", cartFoodRoutes);
-route.use("/api/ticket", ticketRoute);
+route.use("/api/ticket", ticketRoutes);
+route.use("/api/cartTicket" ,cartTicketRoutes);
+route.use('/api/order', orderRoutes);
+route.use('/api/payment', paymentRoutes);
 
 module.exports = route;

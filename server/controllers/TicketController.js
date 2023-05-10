@@ -47,6 +47,28 @@ class TicketController {
       res.status(500).json({ mssage: err.message });
     }
   }
+
+  static async updateStock(req, res) {
+    try {
+      const id = +req.body.id;
+      const stock = +req.body.stock;
+      let result = await ticket.update(
+        {
+          stock: stock,
+        },
+        { where: { id: id } }
+      );
+      result[0] === 1
+        ? res.status(200).json({
+            message: `Id ${id} has been Updated!`,
+          })
+        : res.status(404).json({
+            message: `Couldn't Update id:${id}.'`,
+          });
+    } catch (err) {
+      res.status(500).json({ mssage: err.message });
+    }
+  }
 }
 
 module.exports = TicketController;

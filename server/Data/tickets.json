@@ -1,0 +1,16 @@
+[
+  {
+    "ticketTypeId": 1,
+    "status": false,
+    "stock": 10,
+    "createdAt": "2023-05-08T16:44:57.163Z",
+    "updatedAt": "2023-05-08T16:44:57.163Z"
+  },
+  {
+    "ticketTypeId": 2,
+    "status": false,
+    "stock": 10,
+    "createdAt": "2023-05-08T16:42:55.300Z",
+    "updatedAt": "2023-05-09T17:55:57.919Z"
+  }
+]

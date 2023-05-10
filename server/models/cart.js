@@ -12,15 +12,21 @@ module.exports = (sequelize, DataTypes) => {
       cart.belongsTo(models.user);
       cart.belongsToMany(models.food, { through: models.cartFood });
       cart.belongsToMany(models.ticket, { through: models.cartTicket });
-      cart.hasOne(models.order);
+      cart.belongsTo(models.order);
     }
   }
   cart.init(
     {
       userId: DataTypes.INTEGER,
       qty: DataTypes.INTEGER,
+      orderId : DataTypes.INTEGER,
     },
     {
+      hooks: {
+        beforeCreate: function (cart, options) {
+          cart.orderId = 0;
+        },
+      },
       sequelize,
       modelName: "cart",
     }

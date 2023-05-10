@@ -1,5 +1,5 @@
-const { where } = require("sequelize");
-const { user, food, ticket, cart, cartFood, cartTicket } = require("../models");
+const { food, ticket, cart, cartFood, cartTicket } = require("../models");
+const {sequelize} = require("../models");
 
 class CartController {
   static async getCart(req, res) {
@@ -30,49 +30,79 @@ class CartController {
     }
   }
 
+
   static async delete(req, res) {
+    const id = +req.params.id;
+    const userId = +req.userData.id;
+  
     try {
-      const id = +req.params.id;
-      const userId = +req.userData.id;
-
-      let getCart = await cart.findAll({
-        include: [food, ticket],
-        where: { userId: +userId },
-      });
-      let result = getCart[0].dataValues;
-
-      if (!result.ticket) {
-        let getfood = result.food[0].dataValues;
-        const foodId = +getfood.id;
-        const qty = +result.qty;
-
-        let foodStock = await food.increment("stock", {
-          by: qty,
-          where: { id: foodId },
+      await sequelize.transaction(async (t) => {
+        const getCart = await cart.findOne({
+          include: [food, ticket],
+          where: { id, userId },
+          transaction: t,
         });
-
-        result = await cart.destroy({
-          where: { id },
-        });
-
-        let resultfood = await cartFood.destroy({
-          where: { cartId: +id },
-        });
-      }else{
-        
-      }
-
-      result === 1
-        ? res.status(200).json({
-            message: `Id ${id} has been Deleted!`,
-          })
-        : res.status(404).json({
-            message: `id ${id} not found!'`,
+  
+        if (!getCart) {
+          return res.status(404).json({
+            message: `Cart with id ${id} not found!`,
           });
+        }
+        
+        const isTicket = getCart.dataValues.tickets.length;
+  
+        if (isTicket) {
+          // Handle case when cart has a ticket
+          const ticketData = getCart.tickets[0].dataValues;
+          const ticketId = +ticketData.id;
+          const qty = +getCart.qty;
+  
+          await ticket.increment("stock", {
+            by: qty,
+            where: { id: ticketId },
+            transaction: t,
+          });
+  
+          await cartTicket.destroy({
+            where: { cartId: id },
+            transaction: t,
+          });
+
+        } else {
+          // Handle case when cart only has food
+          console.log({masuk : 111})
+          const foodData = getCart.food[0].dataValues;
+          const foodId = +foodData.id;
+          const qty = +getCart.qty;
+  
+          await food.increment("stock", {
+            by: qty,
+            where: { id: foodId },
+            transaction: t,
+          });
+  
+          await cartFood.destroy({
+            where: { cartId: id },
+            transaction: t,
+          });
+        }
+  
+        await cart.destroy({
+          where: { id },
+          transaction: t,
+        });
+  
+        return res.status(200).json({
+          message: `Cart with id ${id} has been deleted!`,
+        });
+      });
     } catch (err) {
-      res.status(500).json({ message: err.message });
+      return res.status(500).json({
+        message: `Error deleting cart with id ${id}: ${err.message}`,
+      });
     }
   }
+
 
   static async update(req, res) {
     try {

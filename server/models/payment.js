@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     orderId: DataTypes.INTEGER,
     method: DataTypes.STRING,
-    status: DataTypes.BOOLEAN
+    status: DataTypes.BOOLEAN,
+    total: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'payment',

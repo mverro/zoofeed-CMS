@@ -1,6 +1,5 @@
 [
 	{
-		"id" : 1,
 		"name" : "Orang Utan ",
 		"age" : 15,
 		"sex" : "Male",
@@ -13,7 +12,6 @@
 		"imageUrl" : "http://localhost:3000/images/orang_utan.jpg"
 	},
 	{
-		"id" : 2,
 		"name" : "Owa Jawa",
 		"age" : 9,
 		"sex" : "Male",
@@ -26,7 +24,6 @@
 		"imageUrl" : "http://localhost:3000/images/owa_jawa.png"
 	},
 	{
-		"id" : 3,
 		"name" : "Harimau Sumatera",
 		"age" : 11,
 		"sex" : "Male",
@@ -39,7 +36,6 @@
 		"imageUrl" : "http://localhost:3000/images/harimau_sumatra.jpg"
 	},
 	{
-		"id" : 4,
 		"name" : "Jalak Bali",
 		"age" : 3,
 		"sex" : "Male",
@@ -52,7 +48,6 @@
 		"imageUrl" : "http://localhost:3000/images/jalak_bali.jpg"
 	},
 	{
-		"id" : 5,
 		"name" : "Jerapah",
 		"age" : 10,
 		"sex" : "Male",
@@ -65,7 +60,6 @@
 		"imageUrl" : "http://localhost:3000/images/jerapah.jpg"
 	},
 	{
-		"id" : 6,
 		"name" : "Cendrawasih",
 		"age" : 5,
 		"sex" : "Female",
@@ -78,7 +72,6 @@
 		"imageUrl" : "http://localhost:3000/images/cendrawasih.jpg"
 	},
 	{
-		"id" : 7,
 		"name" : "Orca",
 		"age" : 7,
 		"sex" : "Female",
@@ -91,7 +84,6 @@
 		"imageUrl" : "http://localhost:3000/images/orca.jpg"
 	},
 	{
-		"id" : 8,
 		"name" : "Kuda",
 		"age" : 10,
 		"sex" : "Male",
@@ -104,7 +96,6 @@
 		"imageUrl" : "http://localhost:3000/images/kuda.jpg"
 	},
 	{
-		"id" : 9,
 		"name" : "Kapibara",
 		"age" : 5,
 		"sex" : "Male",

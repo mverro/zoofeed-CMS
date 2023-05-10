@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cartId: {
+      total: {
         type: Sequelize.INTEGER
       },
       createdAt: {

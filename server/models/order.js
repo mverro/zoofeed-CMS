@@ -10,14 +10,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       order.hasOne(models.payment);
-      order.belongsTo(models.cart);
+      order.hasMany(models.cart);
     }
   }
   order.init(
     {
-      cartId: DataTypes.INTEGER,
+      total: DataTypes.INTEGER
     },
     {
+      hooks: {
+        beforeCreate: function (order, options) {
+          order.total = 0;
+        },
+      },
       sequelize,
       modelName: "order",
     }

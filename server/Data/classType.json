@@ -1,6 +1,5 @@
 [
     {
-      "id": 1,
       "name": "Mamalia (Mammalia)",
       "imageUrl":"http://localhost:3000/images/Mamalia.jpg",
       "description": "Mamalia meliputi manusia dan semua hewan lain yang merupakan vertebrata berdarah panas (vertebrata memiliki tulang belakang) dengan bulu. Mereka memberi makan anak-anak mereka dengan susu dan memiliki otak yang lebih berkembang daripada jenis hewan lainnya.",
@@ -8,7 +7,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 2,
       "name": "Ikan (Pisces)",
       "imageUrl":"http://localhost:3000/images/Pisces.jpg",
       "description":"Pisces, sebuah kelas vertebrata yang terdiri dari ikan sejati, memiliki rahang yang didukung oleh rangka yang berasal dari lengkungan insang primitif. Biasanya, mereka memiliki dua set sirip berpasangan, sirip dada dan pelvis, serta sirip dorsal, ekor, dan anal di garis tengah.",
@@ -16,7 +14,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 3,
       "name": "Reptil (Reptilia)",
       "imageUrl":"http://localhost:3000/images/Reptilia.jpg",
       "description":"Reptil adalah hewan dalam kelas Reptilia, suatu kelompok parafiletik yang mencakup semua sauropsida kecuali burung. Reptil hidup terdiri dari kura-kura, buaya, kadal, dan rhynchocephalian.",
@@ -24,7 +21,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 4,
       "name": "Burung (Aves)",
       "imageUrl":"http://localhost:3000/images/aves.jpg",
       "description":"Aves adalah sebuah kelompok vertebrata berdarah panas yang membentuk kelas Aves, yang ditandai oleh adanya bulu, rahang bertulang tanpa gigi yang berbentuk seperti paruh, bertelur dengan cangkang keras, laju metabolisme yang tinggi, jantung berempat bilik, dan rangka yang kuat namun ringan.",
@@ -32,7 +28,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 5,
       "name": "Amfibi (Amphibia)",
       "imageUrl":"http://localhost:3000/images/amfibi.jpg",
       "description":"Amfibi adalah vertebrata yang memiliki empat kaki dan bersifat ektothermik (bergantung pada suhu lingkungan) dalam kelas Amphibia. Semua amfibi yang hidup termasuk dalam kelompok Lissamphibia. Mereka menempati berbagai jenis habitat, dengan sebagian besar spesies hidup di ekosistem darat, fosorial, arboreal atau air tawar.",
@@ -40,7 +35,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 6,
       "name": "Arthropoda (Arthropoda)",
       "imageUrl":"http://localhost:3000/images/Arthropoda.jpg",
       "description":"Arthropoda adalah hewan tak bertulang belakang dengan rangka luar, tubuh yang tersegmentasi, dan anggota tubuh berpasangan yang bersendi. Arthropoda membentuk filum Arthropoda. Mereka dibedakan oleh anggota tubuh yang bersendi dan kulitnya yang terbuat dari kitin, seringkali mengandung mineral kalsium karbonat.",
@@ -48,7 +42,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 7,
       "name": "Insekta (Insecta)",
       "imageUrl":"http://localhost:3000/images/insecta.jpg",
       "description":"Insekta adalah invertebrata dalam filum Artropoda dan subfilum Heksapoda yang memiliki eksoskeleton berkitin. Bagian tubuhnya terbagi menjadi tiga bagian, yaitu kepala, toraks, dan abdomen.",
@@ -56,7 +49,6 @@
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
     {
-      "id": 8,
       "name": "Moluska (Mollusca)",
       "imageUrl":"http://localhost:3000/images/moluscas.jpg",
       "description":"Moluska merupakan hewan triploblastik selomata yang bertubuh lunak. Ke dalamnya termasuk semua hewan lunak dengan maupun tanpa cangkang, seperti berbagai jenis siput, kiton, kerang-kerangan, serta cumi-cumi dan kerabatnya. Moluska merupakan filum terbesar kedua dalam kerajaan binatang setelah filum Arthropoda.",

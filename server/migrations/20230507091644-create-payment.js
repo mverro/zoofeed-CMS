@@ -18,6 +18,9 @@ module.exports = {
       method: {
         type: Sequelize.STRING
       },
+      total: {
+        type: Sequelize.INTEGER
+      },
       status: {
         type: Sequelize.BOOLEAN
       },
