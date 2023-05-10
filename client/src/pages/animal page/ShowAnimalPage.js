@@ -36,7 +36,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
     return (
         <>
             <div className='h-[64px]'></div>
-            <div className="p-4 sm:ml-64 dark:bg-gray-900">
+            <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
                 <ModalDetail
                     id={id}
                     detailCheck={detailCheck}
@@ -68,7 +68,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
                         </form>
                     </div>
                     {/* Button Add */}
-                    <button onClick={() => setShowModalAdd(true)} type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
+                    <button onClick={() => setShowModalAdd(true)} type="button" class="focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
                 </div>
                 {/* Table */}
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

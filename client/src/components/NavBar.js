@@ -44,9 +44,9 @@ const NavBar = ({ loginCbHandler, userData }) => {
 
     return (
         <>
-            <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full`}>
+            <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" style={{ fontFamily: "Zoo", fontSize: "3rem", color: "white" }}>Zoo Feed</span>
+                    <span className="self-center text-2xl text-slate-100 font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
                     <div className="flex items-center md:order-2">
                         {/* Dark mode button */}
                         <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
