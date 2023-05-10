@@ -6,7 +6,7 @@ import ModalDetail from './components/ModalDetail';
 import ModalAdd from './components/ModalAdd';
 import Pagination from '../../components/Pagination';
 
-const ShowAnimalPage = () => {
+const ShowAnimalPage = ({ loginStatus }) => {
     const [items, setItems] = useState([]);
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
@@ -21,6 +21,11 @@ const ShowAnimalPage = () => {
     const firstPostPostIndex = lastPostIndex - postPerPage;
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
 
+    useEffect(() => {
+        if (!loginStatus) {
+            navigate('/login')
+        }
+    }, [])
 
     useEffect(() => {
         readDataAnimal(result => setItems(result));

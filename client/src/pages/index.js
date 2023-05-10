@@ -6,11 +6,16 @@ import ShowAnimalPage from "./animal page/ShowAnimalPage";
 // FOOD
 import FoodPage from "./food page/FoodPage";
 import ShowFoodPage from "./food page/ShowFoodPage";
+// AUTH
+import LoginPage from "./auth page/LoginPage";
+import SignUpPage from "./auth page/SignUpPage";
 
 export {
     HomePage,
     AnimalPage,
     ShowAnimalPage,
     FoodPage,
-    ShowFoodPage
+    ShowFoodPage,
+    LoginPage,
+    SignUpPage
 }
