@@ -1,7 +1,6 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
-// const accessToken = localStorage.getItem("access_token");
-const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6Ikpva28iLCJlbWFpbCI6Impva29AbWFpbC5jb20iLCJpbWFnZVVybCI6Imh0dHBzOi8vbWVycml0dGhlYWx0aGNhcmUuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIxLzEyL3BvcnRyYWl0LXBsYWNlaG9sZGVyLnBuZyIsImFnZSI6MjMsInJvbGVJZCI6MiwiaWF0IjoxNjgzNjEzNzE5fQ.vZJhpLq6UZPg1GEEuFAozDqJ-zsmATtB-GtIYzU3IFs";
+const accessToken = localStorage.getItem("access_token");
 const URL = 'http://localhost:3000/api/animals'
 
 const createData = async (items) => {

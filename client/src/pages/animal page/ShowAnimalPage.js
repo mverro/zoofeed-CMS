@@ -5,13 +5,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import ModalDetail from './components/ModalDetail';
 import ModalAdd from './components/ModalAdd';
 import Pagination from '../../components/Pagination';
+import ModalEdit from './components/ModalEdit';
 
 const ShowAnimalPage = ({ loginStatus }) => {
     const [items, setItems] = useState([]);
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
+    const [showModalEdit, setShowModalEdit] = useState(false);
     const [id, setId] = useState(0);
-    const [detailCheck, setdetailCheck] = useState(false)
+    const [detailCheck, setdetailCheck] = useState(false);
+    const [editCheck, setEditCheck] = useState(false)
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(4);
     const [search, setSearch] = useState('');
@@ -20,12 +23,6 @@ const ShowAnimalPage = ({ loginStatus }) => {
     const lastPostIndex = currentPage * postPerPage;
     const firstPostPostIndex = lastPostIndex - postPerPage;
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
-
-    useEffect(() => {
-        if (!loginStatus) {
-            navigate('/login')
-        }
-    }, [])
 
     useEffect(() => {
         readDataAnimal(result => setItems(result));
@@ -41,14 +38,20 @@ const ShowAnimalPage = ({ loginStatus }) => {
             <div className='h-[64px]'></div>
             <div className="p-4 sm:ml-64 dark:bg-gray-900">
                 <ModalDetail
-                    showModalDetail={showModalDetail}
-                    setShowModalDetail={setShowModalDetail}
                     id={id}
                     detailCheck={detailCheck}
+                    showModalDetail={showModalDetail}
+                    setShowModalDetail={setShowModalDetail}
                 />
                 <ModalAdd
                     showModalAdd={showModalAdd}
                     setShowModalAdd={setShowModalAdd}
+                />
+                <ModalEdit
+                    id={id}
+                    editCheck={editCheck}
+                    showModalEdit={showModalEdit}
+                    setShowModalEdit={setShowModalEdit}
                 />
                 {/* Search Bar */}
                 <div className=' flex flex-wrap justify-between py-5'>
@@ -122,7 +125,13 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                                         >
                                                             <FaEye size={23} />
                                                         </div>
-                                                        <FaEdit size={23} color={'#19A7CE'} />
+                                                        <div className='cursor-pointer' onClick={() => {
+                                                            setShowModalEdit(true);
+                                                            setEditCheck(!editCheck);
+                                                            setId(item.id);
+                                                        }}>
+                                                            <FaEdit size={23} color={'#19A7CE'} />
+                                                        </div>
                                                         <div
                                                             className='cursor-pointer'
                                                             onClick={() => deleteHandler(item.id)}
