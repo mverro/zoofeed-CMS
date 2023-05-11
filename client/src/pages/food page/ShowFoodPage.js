@@ -26,14 +26,9 @@ const ShowFoodPage = ({ loginStatus }) => {
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
 
     useEffect(() => {
-        if (!loginStatus) {
-            navigate('/login')
-        }
-    }, [])
-
-    useEffect(() => {
         readData(result => setItems(result));
     }, [items.name])
+
     return (
         <>
             <div className='h-[64px]'></div>
@@ -83,13 +78,16 @@ const ShowFoodPage = ({ loginStatus }) => {
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
-                                    Image
-                                </th>
-                                <th scope="col" className="px-6 py-3">
                                     Name
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Type
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Stock
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Price
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Action
@@ -106,18 +104,22 @@ const ShowFoodPage = ({ loginStatus }) => {
                                     .map((item) => {
                                         return (
                                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td className="px-6 py-4">
+                                                <td className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <img
                                                         className="w-8 h-8 rounded-full object-cover"
                                                         src={item.imageUrl}
                                                         alt="user photo"
                                                     />
-                                                </td>
-                                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     {item.name}
-                                                </th>
+                                                </td>
                                                 <td className="px-6 py-4">
                                                     {item.type}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {item.stock}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {item.price}
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className='flex gap-5'>
