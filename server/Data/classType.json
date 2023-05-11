@@ -50,7 +50,7 @@
     },
     {
       "name": "Moluska (Mollusca)",
-      "imageUrl":"http://localhost:3000/images/moluscas.jpg",
+      "imageUrl":"http://localhost:3000/images/molusca.jpg",
       "description":"Moluska merupakan hewan triploblastik selomata yang bertubuh lunak. Ke dalamnya termasuk semua hewan lunak dengan maupun tanpa cangkang, seperti berbagai jenis siput, kiton, kerang-kerangan, serta cumi-cumi dan kerabatnya. Moluska merupakan filum terbesar kedua dalam kerajaan binatang setelah filum Arthropoda.",
       "createdAt": "2023-03-28T10:00:00.000Z",
       "updatedAt": "2023-03-28T10:00:00.000Z"
