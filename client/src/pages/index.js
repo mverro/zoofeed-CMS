@@ -9,6 +9,9 @@ import ShowFoodPage from "./food page/ShowFoodPage";
 // AUTH
 import LoginPage from "./auth page/LoginPage";
 import SignUpPage from "./auth page/SignUpPage";
+// CLASS
+import ClassTypePage from "./class page/ClassTypePage";
+import ShowClassTypePage from "./class page/ShowClassTypePage";
 
 export {
     HomePage,
@@ -17,5 +20,7 @@ export {
     FoodPage,
     ShowFoodPage,
     LoginPage,
-    SignUpPage
+    SignUpPage,
+    ClassTypePage,
+    ShowClassTypePage
 }

@@ -162,7 +162,6 @@ const ShowAnimalPage = ({ loginStatus }) => {
                     currentPage={currentPage}
                 />
             </div>
-
         </>
     )
 }
