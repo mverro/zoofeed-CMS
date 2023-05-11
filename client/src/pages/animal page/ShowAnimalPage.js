@@ -9,13 +9,12 @@ import ModalEdit from './components/ModalEdit';
 
 const ShowAnimalPage = ({ loginStatus }) => {
     const [items, setItems] = useState([]);
+    const [id, setId] = useState(0);
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
-    const [id, setId] = useState(0);
-    const [detailCheck, setdetailCheck] = useState(false);
-    const [editCheck, setEditCheck] = useState(false);
-    const [addCheck, setAddCheck] = useState(false);
+    const [modalCheck, setModalCheck] = useState(false);
+    const [changeData, setChangeData] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(4);
     const [search, setSearch] = useState('');
@@ -27,11 +26,10 @@ const ShowAnimalPage = ({ loginStatus }) => {
 
     useEffect(() => {
         readDataAnimal(result => setItems(result));
-    }, [items.name])
+    }, [changeData])
 
     const deleteHandler = (id) => {
-        deleteData(id)
-        navigate('/animals')
+        deleteData(id, () => setChangeData(!changeData));
     }
 
     return (
@@ -40,18 +38,22 @@ const ShowAnimalPage = ({ loginStatus }) => {
             <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
                 <ModalDetail
                     id={id}
-                    detailCheck={detailCheck}
+                    modalCheck={modalCheck}
                     showModalDetail={showModalDetail}
                     setShowModalDetail={setShowModalDetail}
                 />
                 <ModalAdd
-                    addCheck={addCheck}
+                    changeData={changeData}
+                    setChangeData={setChangeData}
+                    modalCheck={modalCheck}
                     showModalAdd={showModalAdd}
                     setShowModalAdd={setShowModalAdd}
                 />
                 <ModalEdit
                     id={id}
-                    editCheck={editCheck}
+                    changeData={changeData}
+                    setChangeData={setChangeData}
+                    modalCheck={modalCheck}
                     showModalEdit={showModalEdit}
                     setShowModalEdit={setShowModalEdit}
                 />
@@ -72,8 +74,8 @@ const ShowAnimalPage = ({ loginStatus }) => {
                     {/* Button Add */}
                     <button
                         onClick={() => {
-                            setShowModalAdd(true)
-                            setAddCheck(!addCheck);
+                            setShowModalAdd(true);
+                            setModalCheck(!modalCheck);
                         }}
                         type="button"
                         class="focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
@@ -106,7 +108,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                 })
                                     .map((item) => {
                                         return (
-                                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                 <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <img
                                                         className="w-8 h-8 rounded-full object-cover"
@@ -128,14 +130,14 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                                             onClick={() => {
                                                                 setShowModalDetail(true);
                                                                 setId(item.id)
-                                                                setdetailCheck(!detailCheck);
+                                                                setModalCheck(!modalCheck);
                                                             }}
                                                         >
                                                             <FaEye size={23} />
                                                         </div>
                                                         <div className='cursor-pointer' onClick={() => {
                                                             setShowModalEdit(true);
-                                                            setEditCheck(!editCheck);
+                                                            setModalCheck(!modalCheck);
                                                             setId(item.id);
                                                         }}>
                                                             <FaEdit size={23} color={'#19A7CE'} />

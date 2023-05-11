@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { getClassType } from '../../../axios/classType';
 import { getHabitat } from '../../../axios/habitat';
 import { updateData, detailData } from '../../../axios/animal';
 
-const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
-    const navigation = useNavigate();
+const ModalEdit = ({
+    showModalEdit,
+    setShowModalEdit,
+    modalCheck,
+    id,
+    changeData,
+    setChangeData
+}) => {
     const [classType, setClassType] = useState([]);
     const [habitat, setHabitat] = useState([]);
     const [info, setInfo] = useState({
@@ -29,9 +34,11 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
     }
 
     useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        getItemInfo();
-    }, [editCheck]);
+        if (showModalEdit) {
+            getItemInfo();
+            document.body.style.overflow = 'hidden';
+        }
+    }, [modalCheck]);
 
     useEffect(() => {
         getClassType((result) => setClassType(result));
@@ -75,10 +82,8 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
     }
 
     const submitHandler = () => {
-        console.log(form);
-        updateData(id, form)
-        navigation('/animals')
-        window.location.reload()
+        updateData(id, form, () => setChangeData(!changeData));
+        setShowModalEdit(false);
     };
 
     return (
@@ -109,7 +114,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
                                             <div className="overflow-clip w-1/2 pl-5">
                                                 <div className="mb-2">
                                                     <img
-                                                        src={form.imageUrl}
+                                                        src={info.data.imageUrl}
                                                         className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                         alt="..."
                                                         width="300px"
@@ -204,7 +209,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
                                             <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description about animal..." onChange={(e) => setForm({ ...form, description: e.target.value })} value={form.description}></textarea>
                                         </div>
                                         {/* button */}
-                                        <button onClick={() => submitHandler()} type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Animal</button>
+                                        <button onClick={() => submitHandler()} type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data</button>
                                     </form>
                                 </div>
                             </div>
