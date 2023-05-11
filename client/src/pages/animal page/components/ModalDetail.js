@@ -12,6 +12,11 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
         habitatData: {},
     });
 
+    const closeHandle = () => {
+        setShowModalDetail(false);
+        document.body.style.overflow = 'unset';
+    }
+
     const getAnimalDetail = () => {
         detailData(+id, (result) => {
             setDetail({
@@ -26,6 +31,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
 
     useEffect(() => {
         getAnimalDetail();
+        document.body.style.overflow = 'hidden';
     }, [detailCheck]);
 
     return (
@@ -44,12 +50,11 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                         Animal Information
                                     </h3>
                                     <button
-                                        className="p-1 ml-auto bg-red-500 border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                        onClick={() => setShowModalDetail(false)}
+                                        className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                        onClick={() => closeHandle()}
                                     >
-                                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                            X
-                                        </span>
+                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        <span class="sr-only">Close modal</span>
                                     </button>
                                 </div>
                                 {/*body*/}
@@ -116,7 +121,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                     <button
                                         className="bg-emerald-500 dark:bg-green-600 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
-                                        onClick={() => setShowModalDetail(false)}
+                                        onClick={() => closeHandle()}
                                     >
                                         Okey
                                     </button>
