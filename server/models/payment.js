@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.BOOLEAN,
     total: DataTypes.INTEGER,
   }, {
+    hooks: {
+      beforeCreate: function (payment, options) {
+        payment.status = false;
+        payment.method = "";
+      },
+    },
     sequelize,
     modelName: 'payment',
   });

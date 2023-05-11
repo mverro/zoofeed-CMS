@@ -13,6 +13,7 @@ const ticketRoutes = require("./ticketRoutes");
 const cartTicketRoutes = require("./cartTicketRoutes");
 const orderRoutes = require("./orderRoutes");
 const paymentRoutes = require("./paymentRoutes");
+const userTicketRoutes = require("./userTicketRoutes")
 
 const route = require("express").Router();
 
@@ -31,5 +32,6 @@ route.use("/api/ticket", ticketRoutes);
 route.use("/api/cartTicket" ,cartTicketRoutes);
 route.use('/api/order', orderRoutes);
 route.use('/api/payment', paymentRoutes);
+route.use('/api/userTicket',userTicketRoutes);
 
 module.exports = route;

@@ -20,11 +20,13 @@ module.exports = (sequelize, DataTypes) => {
       userId: DataTypes.INTEGER,
       qty: DataTypes.INTEGER,
       orderId : DataTypes.INTEGER,
+      status : DataTypes.BOOLEAN,
     },
     {
       hooks: {
         beforeCreate: function (cart, options) {
           cart.orderId = 0;
+          cart.status = false;
         },
       },
       sequelize,

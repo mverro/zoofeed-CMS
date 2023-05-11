@@ -4,7 +4,7 @@ const { auth } = require('../middleware/auth')
 
 
 orderRoute.get('/', OrderController.get);
-orderRoute.post('/create', OrderController.create);
+orderRoute.post('/create',auth, OrderController.create);
 orderRoute.delete('/delete/:id', OrderController.delete);
 
 
