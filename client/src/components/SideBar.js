@@ -6,7 +6,9 @@ import {
     FaMountain,
     FaPaw,
     FaUser,
-    FaChartPie
+    FaChartPie,
+    FaTicketAlt,
+    FaCcVisa
 } from "react-icons/fa";
 
 const SideBar = () => {
@@ -57,6 +59,24 @@ const SideBar = () => {
                             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
                                 <FaUser />
                                 <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <FaCcVisa />
+                                <span className="flex-1 ml-3 whitespace-nowrap">Transaction</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <FaTicketAlt />
+                                <span className="flex-1 ml-3 whitespace-nowrap">Ticket</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                                <FaTicketAlt />
+                                <span className="flex-1 ml-3 whitespace-nowrap">User Ticket</span>
                             </a>
                         </li>
                     </ul>

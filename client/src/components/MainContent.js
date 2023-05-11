@@ -33,6 +33,15 @@ const MainContent = ({
                 <Route path='classType' element={<ClassTypePage />}>
                     <Route path='' element={<ShowClassTypePage />}></Route>
                 </Route>
+                <Route path='transaction' element={<ClassTypePage />}>
+                    <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
+                <Route path='ticket' element={<ClassTypePage />}>
+                    <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
+                <Route path='userTicket' element={<ClassTypePage />}>
+                    <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
             </Routes>
         </>
     )
