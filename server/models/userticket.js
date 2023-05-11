@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate: function (userTicket, options) {
         userTicket.status = false;
+        userTicket.barcode = "";
       },
     },
     sequelize,

@@ -13,6 +13,7 @@ const OrderController = require("./OrderController");
 const PaymentController = require("./PaymentController");
 const TicketController = require("./TicketController");
 const TicketTypeController = require("./TicketTypeController");
+const UserTicketController = require("./userTicketController");
 
 
 module.exports = {
@@ -30,5 +31,6 @@ module.exports = {
     OrderController,
     PaymentController,
     TicketController,
-    TicketTypeController
+    TicketTypeController,
+    UserTicketController
 };
