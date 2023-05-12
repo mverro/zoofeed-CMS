@@ -66,13 +66,13 @@ const SideBar = () => {
               </li>
             </Link>
             <li>
-              <a
-                href="#"
+              <Link
+                to={'habitat'}
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <FaMountain />
                 <span className="flex-1 ml-3 whitespace-nowrap">Habitat</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a

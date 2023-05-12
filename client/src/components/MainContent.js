@@ -11,7 +11,9 @@ import {
     ClassTypePage,
     ShowClassTypePage,
     PaymentPage,
-    ShowPaymentPage
+    ShowPaymentPage,
+    HabitatPage,
+    ShowHabitatPage
 } from '../pages';
 
 const MainContent = ({
@@ -34,6 +36,9 @@ const MainContent = ({
                 </Route>
                 <Route path='classType' element={<ClassTypePage />}>
                     <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
+                <Route path='habitat' element={<HabitatPage />}>
+                    <Route path='' element={<ShowHabitatPage />}></Route>
                 </Route>
                 <Route path='transaction' element={<PaymentPage />}>
                     <Route path='' element={<ShowPaymentPage />}></Route>

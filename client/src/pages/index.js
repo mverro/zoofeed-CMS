@@ -15,6 +15,9 @@ import ShowClassTypePage from "./class page/ShowClassTypePage";
 // payment
 import PaymentPage from "./payment page/PaymentPage";
 import ShowPaymentPage from "./payment page/ShowPaymentPage";
+// HABITAT
+import HabitatPage from "./habitat page/HabitatPage";
+import ShowHabitatPage from "./habitat page/ShowHabitatPage";
 
 export {
     HomePage,
@@ -28,4 +31,6 @@ export {
     ShowClassTypePage,
     PaymentPage,
     ShowPaymentPage,
+    HabitatPage,
+    ShowHabitatPage
 }

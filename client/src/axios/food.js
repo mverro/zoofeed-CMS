@@ -36,7 +36,7 @@ const readData = async cb => {
 }
 
 
-const updateData = async (id, items) => {
+const updateData = async (id, items, cb) => {
     try {
         let result = await axios({
             method: 'PUT',
@@ -50,7 +50,7 @@ const updateData = async (id, items) => {
             'Item ' + id + ' has been updated',
             'success'
         )
-        window.location.reload()
+        cb();
     } catch (e) {
         console.log(e)
     }
