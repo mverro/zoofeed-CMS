@@ -12,6 +12,9 @@ import SignUpPage from "./auth page/SignUpPage";
 // CLASS
 import ClassTypePage from "./class page/ClassTypePage";
 import ShowClassTypePage from "./class page/ShowClassTypePage";
+// payment
+import PaymentPage from "./payment page/PaymentPage";
+import ShowPaymentPage from "./payment page/ShowPaymentPage";
 
 export {
     HomePage,
@@ -22,5 +25,7 @@ export {
     LoginPage,
     SignUpPage,
     ClassTypePage,
-    ShowClassTypePage
+    ShowClassTypePage,
+    PaymentPage,
+    ShowPaymentPage,
 }

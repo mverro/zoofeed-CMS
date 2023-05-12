@@ -9,7 +9,9 @@ import {
     LoginPage,
     SignUpPage,
     ClassTypePage,
-    ShowClassTypePage
+    ShowClassTypePage,
+    PaymentPage,
+    ShowPaymentPage
 } from '../pages';
 
 const MainContent = ({
@@ -31,6 +33,15 @@ const MainContent = ({
                     <Route path='' element={<ShowFoodPage loginStatus={loginStatus} />} />
                 </Route>
                 <Route path='classType' element={<ClassTypePage />}>
+                    <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
+                <Route path='transaction' element={<PaymentPage />}>
+                    <Route path='' element={<ShowPaymentPage />}></Route>
+                </Route>
+                <Route path='ticket' element={<ClassTypePage />}>
+                    <Route path='' element={<ShowClassTypePage />}></Route>
+                </Route>
+                <Route path='userTicket' element={<ClassTypePage />}>
                     <Route path='' element={<ShowClassTypePage />}></Route>
                 </Route>
             </Routes>

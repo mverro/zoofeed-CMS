@@ -35,6 +35,7 @@ class PaymentController {
     const t = await sequelize.transaction();
     const userId = req.userData.id;
     try {
+      
       const method = req.body.method;
       const orderId = +req.body.orderId;
 
@@ -53,26 +54,29 @@ class PaymentController {
       for (let order of orderCart) {
         let Carts = await order.dataValues;
         if (Carts.tickets.length !== 0) {
-          let ticketTypeId = Carts.tickets[0].dataValues.ticketTypeId;
-          let createTicket = await userTicket.create(
-            {
-              userId: +userId,
-              ticketTypeId: +ticketTypeId,
-            },
-            { transaction: t }
-          );
-          const userTicketid = +createTicket.id;
-          const data = createTicket.dataValues;
-          const barcode = await generateQRCode(
-            data,
-            userId,
-            orderId,
-            ticketTypeId
-          );
-          const ticketQR = await userTicket.update(
-            { barcode: barcode },
-            { where: { id: userTicketid }, transaction: t }
-          );
+          let qty = +Carts.qty;
+          for (let i = 0; i < qty; i++) {
+            let ticketTypeId = Carts.tickets[0].dataValues.ticketTypeId;
+            let createTicket = await userTicket.create(
+              {
+                userId: +userId,
+                ticketTypeId: +ticketTypeId,
+              },
+              { transaction: t }
+            );
+            const userTicketid = +createTicket.id;
+            const data = createTicket.dataValues;
+            const barcode = await generateQRCode(
+              data,
+              userId,
+              orderId,
+              ticketTypeId
+            );
+            const ticketQR = await userTicket.update(
+              { barcode: barcode },
+              { where: { id: userTicketid }, transaction: t }
+            );
+          }
         }
       }
 
