@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 const accessToken = localStorage.getItem("access_token");
 const URL = 'http://localhost:3000/api/foods'
 
-const createData = async (items) => {
+const createData = async (items, cb) => {
     try {
         await axios({
             method: 'POST',
@@ -17,8 +17,7 @@ const createData = async (items) => {
             'Item has been added',
             'success'
         )
-
-        window.location.reload()
+        cb();
     } catch (e) {
         console.log(e)
     }
@@ -57,7 +56,7 @@ const updateData = async (id, items) => {
     }
 }
 
-const deleteDataF = async (id) => {
+const deleteDataF = async (id, cb) => {
     try {
         Swal.fire({
             title: 'Are you sure?',
@@ -80,7 +79,7 @@ const deleteDataF = async (id) => {
                     'Your file has been deleted.',
                     'success'
                 )
-                window.location.reload()
+                cb();
             }
         })
 

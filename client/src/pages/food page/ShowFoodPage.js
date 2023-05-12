@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { readData } from '../../axios/food'
+import { readData, deleteDataF } from '../../axios/food'
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
 import Pagination from '../../components/Pagination'
 import ModalAdd from './components/ModalAdd'
 import ModalDetail from './components/ModalDetail'
 import ModalEdit from './components/ModalEdit'
 
 const ShowFoodPage = ({ loginStatus }) => {
-    const navigate = useNavigate();
     const [items, setItems] = useState([]);
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
@@ -20,6 +18,7 @@ const ShowFoodPage = ({ loginStatus }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(4);
     const [search, setSearch] = useState('');
+    const [changeData, setChangeData] = useState(false);
 
     const lastPostIndex = currentPage * postPerPage;
     const firstPostPostIndex = lastPostIndex - postPerPage;
@@ -27,7 +26,17 @@ const ShowFoodPage = ({ loginStatus }) => {
 
     useEffect(() => {
         readData(result => setItems(result));
-    }, [items.name])
+    }, [changeData])
+
+    const deleteHandler = (id) => {
+        deleteDataF(id, () => setChangeData(!changeData));
+    }
+
+    const openEditHandle = (id) => {
+        setEditCheck(!editCheck);
+        setShowModalEdit(true);
+        setId(id);
+    }
 
     return (
         <>
@@ -40,12 +49,16 @@ const ShowFoodPage = ({ loginStatus }) => {
                     setShowModalDetail={setShowModalDetail}
                 />
                 <ModalAdd
+                    changeData={changeData}
+                    setChangeData={setChangeData}
                     addCheck={addCheck}
                     showModalAdd={showModalAdd}
                     setShowModalAdd={setShowModalAdd}
                 />
                 <ModalEdit
                     id={id}
+                    changeData={changeData}
+                    setChangeData={setChangeData}
                     editCheck={editCheck}
                     showModalEdit={showModalEdit}
                     setShowModalEdit={setShowModalEdit}
@@ -130,10 +143,12 @@ const ShowFoodPage = ({ loginStatus }) => {
                                                         }}>
                                                             <FaEye size={23} />
                                                         </div>
-                                                        <div>
+                                                        <div onClick={() => openEditHandle(item.id)} className='cursor-pointer'>
                                                             <FaEdit size={23} color={'#19A7CE'} />
                                                         </div>
-                                                        <div>
+                                                        <div
+                                                            className='cursor-pointer'
+                                                            onClick={() => deleteHandler(item.id)}>
                                                             <FaTrash size={20} />
                                                         </div>
                                                     </div>

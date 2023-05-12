@@ -10,17 +10,15 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
     const [habitat, setHabitat] = useState([]);
     const [info, setInfo] = useState({
         data: {},
-        classTypeData: {},
-        habitatData: {},
+        consumed: {}
     });
+
     const [form, setForm] = useState({
         name: "",
-        age: 0,
-        sex: "",
-        description: "",
+        type: "",
+        stock: 0,
+        price: 0,
         imageUrl: null,
-        classTypeId: "",
-        habitatId: "",
     });
 
     const closeHandle = () => {
@@ -35,29 +33,18 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id }) => {
         }
     }, [editCheck]);
 
-    useEffect(() => {
-        getClassType((result) => setClassType(result));
-    }, []);
-
-    useEffect(() => {
-        getHabitat((result) => setHabitat(result));
-    }, []);
-
     const getItemInfo = () => {
         detailData(+id, (result) => {
             setInfo({
                 data: result.resultAF,
-                classTypeData: result.classTypeData[0],
-                habitatData: result.habitatData[0],
+                consumed: result.classTypeData
             });
             setForm({
                 name: result.resultAF.name,
-                age: result.resultAF.age,
-                sex: result.resultAF.sex,
-                description: result.resultAF.description,
+                type: result.resultAF.type,
+                stock: result.resultAF.stock,
+                price: result.resultAF.price,
                 imageUrl: result.resultAF.imageUrl,
-                classTypeId: result.classTypeData[0].id,
-                habitatId: result.habitatData[0].id,
             })
         });
     };

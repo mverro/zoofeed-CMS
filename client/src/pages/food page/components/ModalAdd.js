@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { createData } from '../../../axios/food';
 import { Link, useNavigate } from 'react-router-dom'
 
-const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck }) => {
+const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck, changeData, setChangeData }) => {
     const navigation = useNavigate();
     const [image, setImage] = useState("https://fakeimg.pl/350x200/");
     const [classType, setClassType] = useState([]);
@@ -10,6 +10,8 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck }) => {
     const [form, setForm] = useState({
         name: "",
         type: "",
+        stock: 0,
+        price: 0,
         imageUrl: null,
     });
 
@@ -21,8 +23,8 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck }) => {
     }
 
     const submitHandler = () => {
-        createData(form);
-        navigation('/animals')
+        createData(form, () => setChangeData(!changeData));
+        setShowModalAdd(false);
     };
 
     const closeHandle = () => {
@@ -56,6 +58,14 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck }) => {
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
                                             <input onChange={(e) => setForm({ ...form, type: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="food type" required />
+                                        </div>
+                                        <div>
+                                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+                                            <input onChange={(e) => setForm({ ...form, stock: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="food type" required />
+                                        </div>
+                                        <div>
+                                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                                            <input onChange={(e) => setForm({ ...form, price: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="food type" required />
                                         </div>
                                         <div>
                                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
