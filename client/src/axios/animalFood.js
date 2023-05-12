@@ -4,7 +4,7 @@ const accessToken = localStorage.getItem("access_token");
 
 const URL = 'http://localhost:3000/api/animalfoods'
 
-const addAF = async (id, form) => {
+const addAF = async (id, form, cb) => {
     try {
         await axios({
             method: 'POST',
@@ -18,13 +18,13 @@ const addAF = async (id, form) => {
             'food has been added',
             'success'
         )
-        window.location.reload()
+        cb();
     } catch (e) {
         console.log(e)
     }
 }
 
-const deleteAF = async (id1, id2) => {
+const deleteAF = async (id1, id2, cb) => {
     try {
         Swal.fire({
             title: 'Are you sure?',
@@ -47,7 +47,7 @@ const deleteAF = async (id1, id2) => {
                     'Your file has been deleted.',
                     'success'
                 )
-                window.location.reload()
+                cb();
             }
         })
 
