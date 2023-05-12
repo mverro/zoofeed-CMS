@@ -24,11 +24,11 @@ class FoodController {
       if (roleId === 2) {
         const { name, type, stock, price, imageUrl } = req.body;
         let resultfood = await food.create({
-          name,
-          type,
-          stock,
-          price,
-          imageUrl,
+          name: name,
+          type: type,
+          imageUrl: imageUrl,
+          stock: +stock,
+          price: +price
         });
 
         res.status(201).json(resultfood);
@@ -80,12 +80,14 @@ class FoodController {
         const id = +req.params.id;
         const temp = await food.findByPk(id);
         checkFileUpdate(temp, req);
-        const { name, type, imageUrl } = req.body;
+        const { name, type, imageUrl, stock, price } = req.body;
         const result = await food.update(
           {
             name: name,
             type: type,
             imageUrl: imageUrl,
+            stock: +stock,
+            price: +price,
           },
           {
             where: { id },
