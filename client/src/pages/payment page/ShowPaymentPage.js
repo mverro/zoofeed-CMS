@@ -170,12 +170,6 @@ const ShowPaymentPage = () => {
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
         />
-        <Pagination
-          totalPosts={Payment.length}
-          postPerPage={postPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
       </div>
     </>
   );
