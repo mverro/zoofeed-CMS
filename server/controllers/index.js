@@ -1,4 +1,4 @@
-const AnimalController = require("./animalController");
+const AnimalController = require("./AnimalController");
 const FoodController = require("./FoodController");
 const AnimalFoodController = require("./AnimalFoodController");
 const ClassTypeController = require("./ClassTypeController");

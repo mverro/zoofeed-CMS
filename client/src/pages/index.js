@@ -43,7 +43,7 @@ export {
     TicketPage,
     ShowTicketPage,
     UserTicketPage,
-    ShowUserTicketPage
+    ShowUserTicketPage,
     HabitatPage,
     ShowHabitatPage,
     ProfilePage,
