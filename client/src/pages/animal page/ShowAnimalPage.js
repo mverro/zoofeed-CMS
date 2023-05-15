@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { readDataAnimal, deleteData } from '../../axios/animal';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom'
 import ModalDetail from './components/ModalDetail';
 import ModalAdd from './components/ModalAdd';
 import Pagination from '../../components/Pagination';
 import ModalEdit from './components/ModalEdit';
+import { userLike, userUnlike, getLikeData } from '../../axios/animalUser';
 
 const ShowAnimalPage = ({ loginStatus }) => {
     const [items, setItems] = useState([]);
@@ -16,21 +16,33 @@ const ShowAnimalPage = ({ loginStatus }) => {
     const [modalCheck, setModalCheck] = useState(false);
     const [changeData, setChangeData] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage, setPostPerPage] = useState(4);
+    const [postPerPage, setPostPerPage] = useState(10);
     const [search, setSearch] = useState('');
-    const navigate = useNavigate();
+    const [likeData, setLikeData] = useState([]);
 
     const lastPostIndex = currentPage * postPerPage;
     const firstPostPostIndex = lastPostIndex - postPerPage;
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
 
-    useEffect(() => {
-        readDataAnimal(result => setItems(result));
-    }, [changeData])
+    const animalChecked = (id) => {
+        userLike(id)
+    }
+
+    const animalUnchecked = (id) => {
+        userUnlike(id);
+    }
 
     const deleteHandler = (id) => {
         deleteData(id, () => setChangeData(!changeData));
     }
+
+    useEffect(() => {
+        readDataAnimal(result => setItems(result));
+    }, [changeData])
+
+    // useEffect(() => {
+    //     getLikeData((result) => setLikeData(result));
+    // }, [])
 
     return (
         <>
@@ -87,6 +99,9 @@ const ShowAnimalPage = ({ loginStatus }) => {
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
+                                    ID
+                                </th>
+                                <th scope="col" className="px-6 py-3">
                                     Name
                                 </th>
                                 <th scope="col" className="px-6 py-3">
@@ -94,6 +109,9 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Age
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Check
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Action
@@ -110,6 +128,9 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                     .map((item) => {
                                         return (
                                             <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td className="px-6 py-4">
+                                                    {item.id}
+                                                </td>
                                                 <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <img
                                                         className="w-8 h-8 rounded-full object-cover"
@@ -123,6 +144,16 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     {item.age}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <div class="flex items-center mr-4">
+                                                        {
+                                                            likeData.filter(data => data.id === item.id).length === 1
+                                                                ? <input onClick={() => animalUnchecked(item.id)} checked id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
+                                                                : <input onClick={() => animalChecked(item.id)} id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
+                                                        }
+                                                        <label for="green-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">take care of animal</label>
+                                                    </div>
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className='flex gap-3'>

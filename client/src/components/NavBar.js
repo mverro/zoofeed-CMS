@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const NavBar = ({ loginCbHandler, userData }) => {
+const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [theme, setTheme] = useState("light")
@@ -46,7 +46,9 @@ const NavBar = ({ loginCbHandler, userData }) => {
         <>
             <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <span className="self-center text-2xl text-slate-100 font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
+                    <Link to='/'>
+                        <span className="cursor-pointer self-center text-2xl text-slate-100 font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
+                    </Link>
                     <div className="flex items-center md:order-2">
                         {/* Dark mode button */}
                         <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
@@ -62,8 +64,8 @@ const NavBar = ({ loginCbHandler, userData }) => {
                                 ref={imgRef}
                                 onClick={() => setOpen(!open)}
                                 className="w-10 h-10 rounded-full object-cover"
-                                src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                                alt="user photo"
+                                src={userData.imageUrl}
+                                alt="user"
                             />
                         </button>
                         {/* Dropdown menu */}
@@ -76,7 +78,7 @@ const NavBar = ({ loginCbHandler, userData }) => {
                                     </div>
                                     <ul className="py-2" aria-labelledby="user-menu-button">
                                         <li>
-                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
+                                            <Link to='profile' className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</Link>
                                         </li>
                                         <li onClick={() => logoutHandler()}>
                                             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
