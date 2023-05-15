@@ -24,7 +24,7 @@ const updateUserTicket = async (data,cb) => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Check the payment'
+            confirmButtonText: 'Check'
           }).then(async (result) => {
             if (result.isConfirmed) {
                 let result = await axios({
@@ -35,7 +35,7 @@ const updateUserTicket = async (data,cb) => {
                 })
                 await Swal.fire(
                     'Check Success', 
-                    'Order Id ' + data.orderId + ' has been Entered to Zoo',
+                    'Order Id '+ data.id +' has been Entered to Zoo',
                     'success'
                 )
                 cb()
