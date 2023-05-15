@@ -23,13 +23,13 @@ class FoodController {
     try {
       const roleId = req.userData.roleId;
       if (roleId === 2) {
-        const { name, type, imageUrl,stock,price } = req.body;
+        const { name, type, stock, price, imageUrl } = req.body;
         let resultfood = await food.create({
-          name : name,
-          type : type,
-          imageUrl : imageUrl,
-          stock :+stock,
-          price : +price
+          name: name,
+          type: type,
+          imageUrl: imageUrl,
+          stock: +stock,
+          price: +price
         });
 
         res.status(201).json(resultfood);
@@ -61,11 +61,11 @@ class FoodController {
 
         resultfood === 1
           ? res.status(200).json({
-              message: `Id ${id} has been Deleted!`,
-            })
+            message: `Id ${id} has been Deleted!`,
+          })
           : res.status(404).json({
-              message: `Couldn't delete id:${id}.'`,
-            });
+            message: `Couldn't delete id:${id}.'`,
+          });
       } else {
         res.status(403).json({ message: "Please login as Zookeeper" });
       }
@@ -81,27 +81,27 @@ class FoodController {
         const id = +req.params.id;
         const temp = await food.findByPk(id);
         const tempImage = temp.imageUrl;
-        const { name, type, imageUrl,stock,price } = req.body;
+        const { name, type, imageUrl, stock, price } = req.body;
         const result = await food.update(
           {
             name: name,
             type: type,
             imageUrl: imageUrl,
-            stock : +stock,
+            stock: +stock,
             price: +price,
           },
           {
             where: { id },
           }
         );
-        checkUpload(tempImage,imageUrl)
+        checkUpload(tempImage, imageUrl)
         result[0] === 1
           ? res.status(200).json({
-              message: `Id ${id} has been Updated!`,
-            })
+            message: `Id ${id} has been Updated!`,
+          })
           : res.status(404).json({
-              message: `Couldn't Update id:${id}.'`,
-            });
+            message: `Couldn't Update id:${id}.'`,
+          });
       } else {
         checkData(req);
         res.status(403).json({ message: "Please login as Zookeeper" });

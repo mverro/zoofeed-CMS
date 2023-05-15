@@ -21,6 +21,12 @@ import ShowTicketPage from "./ticket page/ShowTicketPage";
 // userTicket
 import UserTicketPage from "./userTicket page/UserTicketPage";
 import ShowUserTicketPage from "./userTicket page/ShowUserTicketPage";
+// HABITAT
+import HabitatPage from "./habitat page/HabitatPage";
+import ShowHabitatPage from "./habitat page/ShowHabitatPage";
+// PROFILE
+import ProfilePage from "./profile page/ProfilePage";
+import UserInfoPage from "./profile page/UserInfoPage";
 
 export {
     HomePage,
@@ -38,4 +44,8 @@ export {
     ShowTicketPage,
     UserTicketPage,
     ShowUserTicketPage
+    HabitatPage,
+    ShowHabitatPage,
+    ProfilePage,
+    UserInfoPage
 }

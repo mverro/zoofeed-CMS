@@ -4,11 +4,13 @@ import SideBar from './components/SideBar';
 import NavBar from './components/NavBar';
 import MainContent from './components/MainContent';
 import { readDataUser } from './axios/user';
+import ProfileSideBar from './components/ProfileSideBar';
 
 function App() {
-  const [loginStatus, setLoginStatus] = useState(false)
-  const [userData, setUserData] = useState([])
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [userData, setUserData] = useState([]);
   const [userCheck, setUserCheck] = useState(false);
+  const [onProfile, setOnProfile] = useState(false);
 
   const loginCbHandler = (result) => {
     setLoginStatus(result)
@@ -32,8 +34,17 @@ function App() {
   return (
     <>
       <div className={loginStatus ? '' : 'hidden'}>
-        <NavBar loginCbHandler={loginCbHandler} userData={userData} />
-        <SideBar />
+        <NavBar
+          loginCbHandler={loginCbHandler}
+          userData={userData}
+          onProfile={onProfile}
+          setOnProfile={setOnProfile}
+        />
+        {
+          onProfile
+            ? <ProfileSideBar />
+            : <SideBar />
+        }
       </div>
       <MainContent
         loginStatus={loginStatus}
@@ -41,6 +52,8 @@ function App() {
         userData={userData}
         setUserCheck={setUserCheck}
         userCheck={userCheck}
+        onProfile={onProfile}
+        setOnProfile={setOnProfile}
       />
     </>
   );

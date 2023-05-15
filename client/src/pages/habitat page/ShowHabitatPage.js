@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { getClassType } from '../../axios/classType'
+import React, { useEffect, useState } from 'react'
+import { getHabitat } from '../../axios/habitat';
 import TableHead from '../../components/TableHead';
 import TableData from './components/TableData';
 
-const ShowClassTypePage = () => {
-    const tableHead = ["Name", "Description", "Action"];
-    const [ClassType, setClassType] = useState([])
+const ShowHabitatPage = () => {
+    const tableHead = ["Name", "Description", "action"];
+    const [habitat, setHabitat] = useState([]);
 
     useEffect(() => {
-        getClassType((result) => setClassType(result))
+        getHabitat((result) => setHabitat(result));
     }, [])
+
     return (
         <>
             <div className='h-[64px]'></div>
@@ -21,7 +22,7 @@ const ShowClassTypePage = () => {
                             tableHead={tableHead}
                         />
                         <TableData
-                            data={ClassType}
+                            habitat={habitat}
                         />
                     </table>
                 </div>
@@ -30,4 +31,4 @@ const ShowClassTypePage = () => {
     )
 }
 
-export default ShowClassTypePage
+export default ShowHabitatPage
