@@ -6,5 +6,6 @@ ticketRoute.get('/', TicketController.get);
 ticketRoute.post('/create', TicketController.create);
 ticketRoute.delete('/delete/:id', TicketController.delete);
 ticketRoute.put('/updateStock', TicketController.updateStock);
+ticketRoute.get('/get/:id', TicketController.getbyId)
 
 module.exports = ticketRoute

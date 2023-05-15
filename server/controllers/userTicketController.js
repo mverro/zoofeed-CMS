@@ -1,15 +1,37 @@
 const { user, ticketType, userTicket } = require("../models");
+const { Op } = require('sequelize');
 
 class UserTicketController {
+
   static async get(req, res) {
     try {
       let result = await userTicket.findAll({
         include: [user, ticketType],
+        order: [ ['status', 'ASC'],['id', 'ASC']]
+      });
+  
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+
+  static async getFiltered(req, res) {
+    try {
+      const { userName } = req.query;
+
+      const result = await userTicket.findAll({
+        include: [
+          { model: user },
+          { model: ticketType },
+        ],
+        order: [ ['status', 'ASC'],['id', 'ASC']],
+        where: { '$user.name$': { [Op.like]: `%${userName}%` } }
       });
 
       res.status(200).json(result);
     } catch (err) {
-      res.status(500).json({ mssage: err.message });
+      res.status(500).json({ message: err.message });
     }
   }
 

@@ -6,7 +6,7 @@ const { auth } = require('../middleware/auth')
 paymentRoute.get('/', PaymentController.get);
 paymentRoute.get('/user',auth, PaymentController.getbyUser);
 paymentRoute.put('/update',auth,PaymentController.update);
-
+paymentRoute.get('/filter',PaymentController.getFiltered)
 
 
 module.exports = paymentRoute

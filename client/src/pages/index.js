@@ -15,6 +15,12 @@ import ShowClassTypePage from "./class page/ShowClassTypePage";
 // payment
 import PaymentPage from "./payment page/PaymentPage";
 import ShowPaymentPage from "./payment page/ShowPaymentPage";
+// ticket
+import TicketPage from "./ticket page/TicketPage";
+import ShowTicketPage from "./ticket page/ShowTicketPage";
+// userTicket
+import UserTicketPage from "./userTicket page/UserTicketPage";
+import ShowUserTicketPage from "./userTicket page/ShowUserTicketPage";
 
 export {
     HomePage,
@@ -28,4 +34,8 @@ export {
     ShowClassTypePage,
     PaymentPage,
     ShowPaymentPage,
+    TicketPage,
+    ShowTicketPage,
+    UserTicketPage,
+    ShowUserTicketPage
 }

@@ -8,7 +8,7 @@ const {
   animalUser,
 } = require("../models");
 const {
-  checkFileUpdate,
+  checkUpload,
   checkFileDelete,
   checkData,
 } = require("../helper/checkfile");
@@ -30,12 +30,20 @@ class AnimalController {
     try {
       const user = req.userData;
       if (user.roleId === 2) {
-        const { name, age, sex, imageUrl,description, classTypeId, habitatId } = req.body;
+        const {
+          name,
+          age,
+          sex,
+          imageUrl,
+          description,
+          classTypeId,
+          habitatId,
+        } = req.body;
         let result = await animal.create({
           name: name,
           age: +age,
           sex: sex,
-          description : description,
+          description: description,
           imageUrl: imageUrl,
           classTypeId: +classTypeId,
           habitatId: +habitatId,
@@ -88,14 +96,23 @@ class AnimalController {
       if (user.roleId === 2) {
         const id = +req.params.id;
         const temp = await animal.findByPk(id);
-        checkFileUpdate(temp, req);
-        const { name, age, sex,description, imageUrl, classTypeId, habitatId } = req.body;
+        const tempImage = temp.imageUrl;
+        const {
+          name,
+          age,
+          sex,
+          description,
+          imageUrl,
+          classTypeId,
+          habitatId,
+        } = req.body;
+
         const result = await animal.update(
           {
             name: name,
             age: +age,
             sex: sex,
-            description : description,
+            description: description,
             imageUrl: imageUrl,
             classTypeId: classTypeId,
             habitatId: +habitatId,
@@ -104,6 +121,7 @@ class AnimalController {
             where: { id },
           }
         );
+        checkUpload(tempImage,imageUrl)
 
         result[0] === 1
           ? res.status(200).json({

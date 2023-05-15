@@ -1,6 +1,7 @@
 const { food, animal, animalFood } = require("../models");
 const {
   checkFileUpdate,
+  checkUpload,
   checkFileDelete,
   checkData,
 } = require("../helper/checkfile");
@@ -79,7 +80,7 @@ class FoodController {
       if (roleId === 2) {
         const id = +req.params.id;
         const temp = await food.findByPk(id);
-        checkFileUpdate(temp, req);
+        const tempImage = temp.imageUrl;
         const { name, type, imageUrl,stock,price } = req.body;
         const result = await food.update(
           {
@@ -93,7 +94,7 @@ class FoodController {
             where: { id },
           }
         );
-
+        checkUpload(tempImage,imageUrl)
         result[0] === 1
           ? res.status(200).json({
               message: `Id ${id} has been Updated!`,

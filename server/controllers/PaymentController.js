@@ -2,17 +2,39 @@ const { user, sequelize, order, payment, userTicket } = require("../models");
 const qr = require("qrcode");
 const { findOrderById } = require("../helper/findOrderById");
 const { generateQRCode } = require("../helper/generateQRCode");
+const { Op } = require('sequelize');
+
 
 class PaymentController {
   static async get(req, res) {
     try {
       let result = await payment.findAll({
         include: [user, order],
+        order: [ ['status', 'ASC'],['id', 'ASC']]
       });
 
       res.status(200).json(result);
     } catch (err) {
       res.status(500).json({ mssage: err.message });
+    }
+  }
+
+  static async getFiltered(req, res) {
+    try {
+      const { userName } = req.query;
+
+      const result = await payment.findAll({
+        include: [
+          { model: user },
+          { model: order },
+        ],
+        order: [ ['status', 'ASC'],['id', 'ASC']],
+        where: { '$user.name$': { [Op.like]: `%${userName}%` } }
+      });
+
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
     }
   }
 
@@ -33,7 +55,6 @@ class PaymentController {
 
   static async update(req, res) {
     const t = await sequelize.transaction();
-    const userId = req.userData.id;
     try {
       
       const method = req.body.method;
@@ -54,6 +75,7 @@ class PaymentController {
       for (let order of orderCart) {
         let Carts = await order.dataValues;
         if (Carts.tickets.length !== 0) {
+          let userId = Carts.userId;
           let qty = +Carts.qty;
           for (let i = 0; i < qty; i++) {
             let ticketTypeId = Carts.tickets[0].dataValues.ticketTypeId;

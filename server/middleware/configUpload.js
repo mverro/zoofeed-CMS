@@ -32,7 +32,6 @@ let upload = (req, res, next) => {
       return next(err);
     }
     if (!req.file) {
-      req.body.imageUrl = "https://merritthealthcare.com/wp-content/uploads/2021/12/portrait-placeholder.png"
       return next();
     }
     let imageUrl =

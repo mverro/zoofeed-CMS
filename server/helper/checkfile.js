@@ -17,6 +17,16 @@ const checkFileUpdate = (data, req) => {
   }
 };
 
+const checkUpload = (tempImage,imageUrl) => {
+  if (tempImage !== imageUrl) {
+    let fileName = tempImage;
+    const split = fileName.split("/");
+    fileName = split[split.length - 1];
+    fs.unlinkSync(`./public/images/${fileName}`);
+  }
+
+}
+
 const checkFileDelete = (data) => {
   if (data) {
     let fileName = data.dataValues.imageUrl;
@@ -36,4 +46,4 @@ const checkData = (req) => {
         fs.unlinkSync(`./public/images/${fileName}`);
 }
 
-module.exports = { checkFileUpdate, checkFileDelete, checkData };
+module.exports = { checkFileUpdate, checkFileDelete, checkData, checkUpload };

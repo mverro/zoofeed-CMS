@@ -97,15 +97,19 @@ const SideBar = () => {
               </li>
             </Link>
 
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <FaTicketAlt />
-                <span className="flex-1 ml-3 whitespace-nowrap">Ticket</span>
-              </a>
-            </li>
+            <Link to={"/ticket"}>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                  <FaTicketAlt />
+                  <span className="flex-1 ml-3 whitespace-nowrap">Ticket</span>
+                </a>
+              </li>
+            </Link>
+
+            <Link to={"/userTicket"}>
             <li>
               <a
                 href="#"
@@ -117,6 +121,9 @@ const SideBar = () => {
                 </span>
               </a>
             </li>
+            </Link>
+            
+
           </ul>
         </div>
       </aside>
