@@ -56,6 +56,7 @@ const ModalEdit = ({
   return (
     <>
       {showModalEdit ? (
+        <>
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed pt-20 pb-5 inset-0 z-50 outline-none focus:outline-none">
           <div class="relative w-full max-w-xl max-h-full">
             {/* Modal content */}
@@ -136,6 +137,8 @@ const ModalEdit = ({
             </div>
           </div>
         </div>
+        <div className="opacity-30 fixed inset-0 z-40 bg-black"></div>
+        </>
       ) : null}
     </>
   );

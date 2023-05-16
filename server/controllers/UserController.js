@@ -1,7 +1,10 @@
 const { user, role, animal } = require("../models");
 const fs = require("fs");
 const { decryptPwd } = require("../helper/encrypt");
-const { tokenGenerator, tokenVerifier } = require("../helper/jsonwebtoken");
+const { tokenGenerator } = require("../helper/jsonwebtoken");
+const {
+  checkUpload,
+} = require("../helper/checkfile");
 
 class UserController {
   static async getUsers(req, res) {
@@ -33,6 +36,8 @@ class UserController {
   static async update(req, res) {
     try {
       const id = +req.params.id;
+      const temp = await user.findByPk(id);
+      const tempImage = temp.imageUrl;
       const { name, age, email, imageUrl } = req.body;
       let result = await user.update(
         {
@@ -43,6 +48,7 @@ class UserController {
         },
         { where: { id: id } }
       );
+      checkUpload(tempImage,imageUrl)
       res.status(200).json(result);
     } catch (err) {
       res.status(500).json({ message: err.message });

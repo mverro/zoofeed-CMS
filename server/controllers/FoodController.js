@@ -12,6 +12,7 @@ class FoodController {
     try {
       let result = await food.findAll({
         include: [animal],
+        order: [ ['id', 'ASC']]
       });
       res.status(200).json(result);
     } catch (err) {
@@ -152,6 +153,10 @@ class FoodController {
     try {
       const searchQuery = req.query.key;
       const results = await food.findAll({
+        include: [
+          { model: animal },
+        ],
+        order: [ ['id', 'ASC']],
         where: {
           name: { [Op.iLike]: `%${searchQuery}%` },
         },

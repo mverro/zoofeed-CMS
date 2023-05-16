@@ -22,7 +22,14 @@ const ShowPaymentPage = () => {
   const currentPosts = Payment.slice(firstPostPostIndex, lastPostIndex);
 
   useEffect(() => {
-    paymentFiltered(userName, (result) => setPayment(result.data));
+    const timeout = setTimeout(() => {
+      paymentFiltered(userName, (result) => setPayment(result.data));
+    },500)
+
+    return () =>{
+      clearTimeout(timeout)
+    }
+    
   }, [userName]);
 
   const handleFilterChange = (event) => {

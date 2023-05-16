@@ -19,6 +19,7 @@ class AnimalController {
     try {
       let result = await animal.findAll({
         include: [classType, habitat],
+        order: [ ['id', 'ASC']]
       });
       res.status(200).json(result);
     } catch (err) {
@@ -207,6 +208,11 @@ class AnimalController {
     try {
       const searchQuery = req.query.key;
       const results = await animal.findAll({
+        include: [
+          { model: classType },
+          { model: habitat },
+        ],
+        order: [['id', 'ASC']],
         where: {
           name: { [Op.iLike]: `%${searchQuery}%` },
         },
