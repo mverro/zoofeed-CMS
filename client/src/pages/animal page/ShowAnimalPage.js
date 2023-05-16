@@ -13,6 +13,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
+    const [updateLike, setUpdateLike] = useState(false);
     const [modalCheck, setModalCheck] = useState(false);
     const [changeData, setChangeData] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,11 +26,11 @@ const ShowAnimalPage = ({ loginStatus }) => {
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
 
     const animalChecked = (id) => {
-        userLike(id)
+        userLike(id, () => setUpdateLike(!updateLike))
     }
 
     const animalUnchecked = (id) => {
-        userUnlike(id);
+        userUnlike(id, () => setUpdateLike(!updateLike));
     }
 
     const deleteHandler = (id) => {
@@ -40,14 +41,13 @@ const ShowAnimalPage = ({ loginStatus }) => {
         readDataAnimal(result => setItems(result));
     }, [changeData])
 
-    // useEffect(() => {
-    //     getLikeData((result) => setLikeData(result));
-    // }, [])
+    useEffect(() => {
+        getLikeData((result) => setLikeData(result));
+    }, [updateLike])
 
     return (
         <>
-            <div className='h-[64px]'></div>
-            <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
+            <div className="p-4 sm:ml-64 pt-[85px] h-min">
                 <ModalDetail
                     id={id}
                     modalCheck={modalCheck}
@@ -91,7 +91,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
                         }}
                         data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom"
                         type="button"
-                        class="focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
+                        class="relative focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
                 </div>
                 {/* Table */}
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -148,7 +148,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                                 <td className="px-6 py-4">
                                                     <div class="flex items-center mr-4">
                                                         {
-                                                            likeData.filter(data => data.id === item.id).length === 1
+                                                            likeData.filter(data => data.id === item.id).length !== 0
                                                                 ? <input onClick={() => animalUnchecked(item.id)} checked id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
                                                                 : <input onClick={() => animalChecked(item.id)} id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
                                                         }

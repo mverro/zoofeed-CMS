@@ -45,8 +45,7 @@ const ShowUserTicketPage = () => {
 
   return (
     <>
-      <div className="h-[64px]"></div>
-      <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
+      <div className="p-4 sm:ml-64 h-min pt-[85px]">
         {/* Search Bar */}
         <div className=" flex flex-wrap justify-between py-5">
           {/* Search */}
@@ -85,11 +84,11 @@ const ShowUserTicketPage = () => {
           {/* {barcode} */}
 
           <button
-            onClick={() => {}}
+            onClick={() => { }}
             type="button"
-            class="focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            className="relative focus:outline-none text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
           >
-            <CiBarcode size={30}/>
+            <CiBarcode size={30} />
             Scan
           </button>
         </div>
@@ -154,7 +153,7 @@ const ShowUserTicketPage = () => {
                       />
                     </td>
                     <td className="px-6 py-4">
-                      <div className="cursor-pointer" onClick={() => {}}>
+                      <div className="cursor-pointer" onClick={() => { }}>
                         {item.status === true ? (
                           <button
                             value={item.orderId}

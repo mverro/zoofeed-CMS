@@ -26,14 +26,6 @@ const TableData = ({ data }) => {
                                     >
                                         <FaEye size={23} />
                                     </div>
-                                    <div className='cursor-pointer'>
-                                        <FaEdit size={23} color={'#19A7CE'} />
-                                    </div>
-                                    <div
-                                        className='cursor-pointer'
-                                    >
-                                        <FaTrash size={20} color={'#F15A59'} />
-                                    </div>
                                 </div>
                             </td>
                         </tr>

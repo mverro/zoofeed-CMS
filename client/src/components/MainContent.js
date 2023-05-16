@@ -19,7 +19,10 @@ import {
     TicketPage,
     ShowTicketPage,
     UserTicketPage,
-    ShowUserTicketPage
+    ShowUserTicketPage,
+    AnimalCarePage,
+    UserPage,
+    ShowUserPage
 } from '../pages';
 
 const MainContent = ({
@@ -73,6 +76,7 @@ const MainContent = ({
                         <UserInfoPage
                             userData={userData}
                         />}></Route>
+                    <Route path='animals-care' element={<AnimalCarePage />} />
                 </Route>
                 <Route path='profile' element={
                     <ProfilePage
@@ -82,6 +86,9 @@ const MainContent = ({
                         <UserInfoPage
                             userData={userData}
                         />}></Route>
+                </Route>
+                <Route path='users' element={<UserPage />}>
+                    <Route path='' element={<ShowUserPage />} />
                 </Route>
             </Routes>
         </>

@@ -64,7 +64,7 @@ const createUser = async (datas, loginCbHandler) => {
     }
 }
 
-const updateUser = async (id, datas) => {
+const updateUser = async (id, datas, cb) => {
     try {
         await axios({
             method: 'PUT',
@@ -75,11 +75,24 @@ const updateUser = async (id, datas) => {
                 access_token: token
             }
         })
+        cb();
         await Swal.fire(
-            'Edit user ' + id,
+            'Update ' + datas.name + ' information',
             'User ' + id + ' has been updated',
             'success'
         )
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const getAllUser = async (cb) => {
+    try {
+        let result = await axios({
+            method: 'GET',
+            url: URL,
+        })
+        cb(result.data);
     } catch (error) {
         console.log(error);
     }
@@ -89,5 +102,6 @@ export {
     readDataUser,
     createUser,
     login,
-    updateUser
+    updateUser,
+    getAllUser
 }

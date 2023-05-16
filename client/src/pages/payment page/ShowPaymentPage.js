@@ -45,8 +45,7 @@ const ShowPaymentPage = () => {
 
   return (
     <>
-      <div className="h-[64px]"></div>
-      <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
+      <div className="p-4 sm:ml-64 h-min pt-[85px]">
         {/* Search Bar */}
         <div className=" flex flex-wrap justify-between py-5">
           {/* Search */}
