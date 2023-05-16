@@ -33,6 +33,7 @@ function App() {
 
   return (
     <>
+      <div className='fixed top-0 bottom-0 right-0 left-0 dark:bg-slate-900'></div>
       <div className={loginStatus ? '' : 'hidden'}>
         <NavBar
           loginCbHandler={loginCbHandler}
@@ -55,6 +56,7 @@ function App() {
         onProfile={onProfile}
         setOnProfile={setOnProfile}
       />
+
     </>
   );
 }

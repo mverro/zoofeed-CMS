@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { getHabitat } from '../../axios/habitat';
+import { getAllUser } from '../../axios/user'
 import TableHead from '../../components/TableHead';
 import TableData from './components/TableData';
 
-const ShowHabitatPage = () => {
-    const tableHead = ["Name", "Description", "action"];
-    const [habitat, setHabitat] = useState([]);
+const ShowUserPage = () => {
+    const tableHead = ['Name', 'Email', 'Role', 'Action'];
+    const [datas, setDatas] = useState([]);
 
     useEffect(() => {
-        getHabitat((result) => setHabitat(result));
-    }, [])
-
+        getAllUser((result) => setDatas(result));
+    })
     return (
         <>
             <div className="p-4 sm:ml-64 h-min pt-[85px]">
@@ -21,7 +20,7 @@ const ShowHabitatPage = () => {
                             tableHead={tableHead}
                         />
                         <TableData
-                            habitat={habitat}
+                            user={datas}
                         />
                     </table>
                 </div>
@@ -30,4 +29,4 @@ const ShowHabitatPage = () => {
     )
 }
 
-export default ShowHabitatPage
+export default ShowUserPage

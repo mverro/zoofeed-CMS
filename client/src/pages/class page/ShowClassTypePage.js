@@ -12,8 +12,7 @@ const ShowClassTypePage = () => {
     }, [])
     return (
         <>
-            <div className='h-[64px]'></div>
-            <div className="p-4 sm:ml-64 h-screen dark:bg-gray-900">
+            <div className="p-4 sm:ml-64 pt-[85px] h-min">
                 {/* Table */}
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

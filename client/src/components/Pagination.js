@@ -17,7 +17,7 @@ const Pagination = ({ totalPosts, postPerPage, setCurrentPage, currentPage }) =>
 
     return (
         <>
-            <div className='flex justify-center m-3'>
+            <div className='flex justify-center m-3 relative'>
                 <nav aria-label="Page navigation example">
                     <ul className="inline-flex items-center -space-x-px">
                         <li>

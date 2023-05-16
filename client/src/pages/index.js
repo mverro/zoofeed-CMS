@@ -27,6 +27,10 @@ import ShowHabitatPage from "./habitat page/ShowHabitatPage";
 // PROFILE
 import ProfilePage from "./profile page/ProfilePage";
 import UserInfoPage from "./profile page/UserInfoPage";
+import AnimalCarePage from "./profile page/AnimalCarePage";
+// USER
+import UserPage from "./user page/UserPage";
+import ShowUserPage from "./user page/ShowUserPage";
 
 export {
     HomePage,
@@ -47,5 +51,8 @@ export {
     HabitatPage,
     ShowHabitatPage,
     ProfilePage,
-    UserInfoPage
+    UserInfoPage,
+    AnimalCarePage,
+    UserPage,
+    ShowUserPage
 }
