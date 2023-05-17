@@ -101,10 +101,23 @@ const detailData = async (id, cb) => {
     }
 }
 
+const searchFood = async (data, cb) => {
+    try {
+        let result = await axios({
+            method: "GET",
+            url: URL + `/search?key=${data}`,
+        })
+        cb(result.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export {
     createData,
     readData,
     updateData,
     deleteDataF,
-    detailData
+    detailData,
+    searchFood
 }

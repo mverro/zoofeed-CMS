@@ -31,14 +31,7 @@ const searchAnimal = async (data, cb) => {
     try {
         let result = await axios({
             method: "GET",
-            url: URL + '/search',
-            params: {
-                key: data
-            },
-            headers: {
-                'X-RapidAPI-Key': 'your-rapidapi-key',
-                'X-RapidAPI-Host': 'body-mass-index-bmi-calculator.p.rapidapi.com',
-            },
+            url: URL + `/search?key=${data}`,
         })
         cb(result.data);
     } catch (error) {

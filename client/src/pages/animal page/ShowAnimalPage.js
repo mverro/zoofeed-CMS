@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { readDataAnimal, deleteData } from '../../axios/animal';
+import { readDataAnimal, deleteData, searchAnimal } from '../../axios/animal';
 import { FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import ModalDetail from './components/ModalDetail';
 import ModalAdd from './components/ModalAdd';
@@ -36,6 +36,21 @@ const ShowAnimalPage = ({ loginStatus }) => {
     const deleteHandler = (id) => {
         deleteData(id, () => setChangeData(!changeData));
     }
+
+    const handleFilterChange = (event) => {
+        setSearch(event.target.value);
+    };
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            searchAnimal(search, (result) => setItems(result));
+        }, 500)
+
+        return () => {
+            clearTimeout(timeout)
+        }
+
+    }, [search]);
 
     useEffect(() => {
         readDataAnimal(result => setItems(result));
@@ -79,7 +94,8 @@ const ShowAnimalPage = ({ loginStatus }) => {
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                                 </div>
-                                <input onChange={(e) => setSearch(e.target.value)} type="text" id="simple-search" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
+                                <input
+                                    onChange={handleFilterChange} type="text" id="simple-search" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
                             </div>
                         </form>
                     </div>
@@ -120,71 +136,66 @@ const ShowAnimalPage = ({ loginStatus }) => {
                         </thead>
                         <tbody>
                             {
-                                currentPosts.filter((item) => {
-                                    return search.toLowerCase() === ''
-                                        ? item
-                                        : item.name.toLowerCase().includes(search);
-                                })
-                                    .map((item) => {
-                                        return (
-                                            <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td className="px-6 py-4">
-                                                    {item.id}
-                                                </td>
-                                                <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <img
-                                                        className="w-8 h-8 rounded-full object-cover"
-                                                        src={item.imageUrl}
-                                                        alt="user photo"
-                                                    />
-                                                    {item.name}
-                                                </th>
-                                                <td className="px-6 py-4">
-                                                    {item.sex}
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    {item.age}
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div class="flex items-center mr-4">
-                                                        {
-                                                            likeData.filter(data => data.id === item.id).length !== 0
-                                                                ? <input onClick={() => animalUnchecked(item.id)} checked id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
-                                                                : <input onClick={() => animalChecked(item.id)} id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
-                                                        }
-                                                        <label for="green-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">take care of animal</label>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className='flex gap-3'>
-                                                        <div
-                                                            className='cursor-pointer'
-                                                            onClick={() => {
-                                                                setShowModalDetail(true);
-                                                                setId(item.id)
-                                                                setModalCheck(!modalCheck);
-                                                            }}
-                                                        >
-                                                            <FaEye size={23} />
-                                                        </div>
-                                                        <div className='cursor-pointer' onClick={() => {
-                                                            setShowModalEdit(true);
+                                currentPosts.map((item) => {
+                                    return (
+                                        <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td className="px-6 py-4">
+                                                {item.id}
+                                            </td>
+                                            <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <img
+                                                    className="w-8 h-8 rounded-full object-cover"
+                                                    src={item.imageUrl}
+                                                    alt="user photo"
+                                                />
+                                                {item.name}
+                                            </th>
+                                            <td className="px-6 py-4">
+                                                {item.sex}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {item.age}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div class="flex items-center mr-4">
+                                                    {
+                                                        likeData.filter(data => data.id === item.id).length !== 0
+                                                            ? <input onClick={() => animalUnchecked(item.id)} checked id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
+                                                            : <input onClick={() => animalChecked(item.id)} id="green-checkbox" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
+                                                    }
+                                                    <label for="green-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">take care of animal</label>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className='flex gap-3'>
+                                                    <div
+                                                        className='cursor-pointer'
+                                                        onClick={() => {
+                                                            setShowModalDetail(true);
+                                                            setId(item.id)
                                                             setModalCheck(!modalCheck);
-                                                            setId(item.id);
-                                                        }}>
-                                                            <FaEdit size={23} color={'#19A7CE'} />
-                                                        </div>
-                                                        <div
-                                                            className='cursor-pointer'
-                                                            onClick={() => deleteHandler(item.id)}
-                                                        >
-                                                            <FaTrash size={20} color={'#F15A59'} />
-                                                        </div>
+                                                        }}
+                                                    >
+                                                        <FaEye size={23} />
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
+                                                    <div className='cursor-pointer' onClick={() => {
+                                                        setShowModalEdit(true);
+                                                        setModalCheck(!modalCheck);
+                                                        setId(item.id);
+                                                    }}>
+                                                        <FaEdit size={23} color={'#19A7CE'} />
+                                                    </div>
+                                                    <div
+                                                        className='cursor-pointer'
+                                                        onClick={() => deleteHandler(item.id)}
+                                                    >
+                                                        <FaTrash size={20} color={'#F15A59'} />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
                             }
                         </tbody>
                     </table>
