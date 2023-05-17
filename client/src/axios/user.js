@@ -66,7 +66,7 @@ const createUser = async (datas, loginCbHandler) => {
 
 const updateUser = async (id, datas, cb) => {
     try {
-        await axios({
+        let result = await axios({
             method: 'PUT',
             url: URL + `/update/${id}`,
             data: datas,
@@ -75,12 +75,26 @@ const updateUser = async (id, datas, cb) => {
                 access_token: token
             }
         })
+        const access_token = result.data.access_token;
+        localStorage.setItem('access_token', access_token);
+        const Toast =  Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          await Toast.fire({
+            icon: 'success',
+            title: 'Profile Update successfully'
+          })
         cb();
-        await Swal.fire(
-            'Update ' + datas.name + ' information',
-            'User ' + id + ' has been updated',
-            'success'
-        )
+        // window.location.reload();
     } catch (error) {
         console.log(error);
     }
