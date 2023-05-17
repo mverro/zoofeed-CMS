@@ -8,7 +8,7 @@ const SidebarMenu = (props) => {
                 className="flex gap-2 items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-green-100 dark:hover:bg-gray-700"
             >
                 {props.icon}
-                <span className="ml-3 text-white">{props.label}</span>
+                <span className="ml-3 font-medium">{props.label}</span>
             </Link>
         </li>
     )

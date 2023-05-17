@@ -16,47 +16,47 @@ const SideBar = () => {
   const items = [
     {
       link: '/',
-      icon: <FaChartPie color='white' />,
+      icon: <FaChartPie />,
       label: 'Dashboard'
     },
     {
       link: 'animals',
-      icon: <FaStickerMule color='white' />,
+      icon: <FaStickerMule />,
       label: 'Animal'
     },
     {
       link: 'foods',
-      icon: <FaApple color='white' />,
+      icon: <FaApple />,
       label: 'Food'
     },
     {
       link: 'classTypes',
-      icon: <FaPaw color='white' />,
+      icon: <FaPaw />,
       label: 'Class'
     },
     {
       link: 'habitats',
-      icon: <FaMountain color='white' />,
+      icon: <FaMountain />,
       label: 'Habitat'
     },
     {
       link: 'users',
-      icon: <FaUser color='white' />,
+      icon: <FaUser />,
       label: 'User'
     },
     {
       link: 'transactions',
-      icon: <FaCcVisa color='white' />,
+      icon: <FaCcVisa />,
       label: 'Transaction'
     },
     {
       link: 'tickets',
-      icon: <FaTicketAlt color='white' />,
+      icon: <FaTicketAlt />,
       label: 'Ticket'
     },
     {
       link: 'userTickets',
-      icon: <FaTicketAlt color='white' />,
+      icon: <FaTicketAlt />,
       label: 'User Ticket'
     },
   ]
@@ -67,7 +67,7 @@ const SideBar = () => {
         className="fixed top-[64px] left-0 z-10 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-[#019267] dark:bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-slate-100 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {
               items.map((item) => {

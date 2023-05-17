@@ -4,6 +4,7 @@ import { readData } from '../../../axios/food';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { deleteAF, addAF } from '../../../axios/animalFood';
+import { Tooltip } from "@material-tailwind/react";
 
 const ModalDetail = ({ showModalDetail, setShowModalDetail, id, modalCheck }) => {
     const [foods, setFoods] = useState([]);
@@ -181,12 +182,16 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, modalCheck }) =>
                                                     ? foods.map((food) => {
                                                         return (
                                                             <div className='relative'>
-
-                                                                <img
-                                                                    className="w-14 h-14 rounded-lg object-cover hover:bg-black"
-                                                                    src={food.imageUrl}
-                                                                    alt="Food image"
-                                                                />
+                                                                <Tooltip
+                                                                    className='z-50 p-3'
+                                                                    content={food.name}
+                                                                >
+                                                                    <img
+                                                                        className="w-14 h-14 rounded-lg object-cover hover:bg-black"
+                                                                        src={food.imageUrl}
+                                                                        alt="Food image"
+                                                                    />
+                                                                </Tooltip>
                                                                 <div onClick={() => deleteFoodHandle(food.id)} className={isEdit ? 'flex items-center justify-center rounded-md absolute -top-1 -right-1 h-5 w-5 cursor-pointer bg-red-400' : 'hidden'}>
                                                                     <MdClose color='white' />
                                                                 </div>

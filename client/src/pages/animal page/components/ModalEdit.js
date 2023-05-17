@@ -83,6 +83,7 @@ const ModalEdit = ({
 
     const submitHandler = () => {
         updateData(id, form, () => setChangeData(!changeData));
+        document.body.style.overflow = 'unset';
         setShowModalEdit(false);
     };
 

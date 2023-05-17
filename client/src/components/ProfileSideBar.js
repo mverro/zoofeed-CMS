@@ -10,8 +10,21 @@ import {
     FaTicketAlt,
     FaCcVisa,
 } from "react-icons/fa";
+import SidebarMenu from "./SidebarMenu";
 
 const ProfileSideBar = () => {
+    const items = [
+        {
+            label: 'User Info',
+            link: 'profile',
+            icon: <FaUser />
+        },
+        {
+            label: 'Animal Carer',
+            link: 'profile/animals-cares',
+            icon: <FaStickerMule />
+        }
+    ]
     return (
         <>
             <aside
@@ -21,22 +34,17 @@ const ProfileSideBar = () => {
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
-                        <li>
-                            <Link to='/profile'
-                                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-                            >
-                                <FaUser />
-                                <span className="ml-3">User Info</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/profile/animals-care"
-                                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-                            >
-                                <FaStickerMule />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Animals</span>
-                            </Link>
-                        </li>
+                        {
+                            items.map((item) => {
+                                return (
+                                    <SidebarMenu
+                                        link={item.link}
+                                        label={item.label}
+                                        icon={item.icon}
+                                    />
+                                )
+                            })
+                        }
                     </ul>
                 </div>
             </aside>

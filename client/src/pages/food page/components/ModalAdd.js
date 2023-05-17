@@ -24,6 +24,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck, changeData, setChan
 
     const submitHandler = () => {
         createData(form, () => setChangeData(!changeData));
+        document.body.style.overflow = 'unset';
         setShowModalAdd(false);
     };
 

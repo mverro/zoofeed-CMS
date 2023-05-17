@@ -4,6 +4,7 @@ import { readDataAnimal } from '../../../axios/animal';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import { addFA, deleteFA } from '../../../axios/animalFood';
+import { Tooltip } from "@material-tailwind/react";
 
 const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) => {
     const [foods, setFoods] = useState([]);
@@ -167,11 +168,16 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                                         ? animals.map((animal) => {
                                                             return (
                                                                 <div className='relative'>
-                                                                    <img
-                                                                        className="w-14 h-14 rounded-lg object-cover"
-                                                                        src={animal.imageUrl}
-                                                                        alt="Animal image"
-                                                                    />
+                                                                    <Tooltip
+                                                                        className='z-50 p-3'
+                                                                        content={animal.name}
+                                                                    >
+                                                                        <img
+                                                                            className="w-14 h-14 rounded-lg object-cover"
+                                                                            src={animal.imageUrl}
+                                                                            alt="Animal image"
+                                                                        />
+                                                                    </Tooltip>
                                                                     <div onClick={() => deleteAnimalHandle(animal.id)} className={isEdit ? 'flex items-center justify-center rounded-md absolute -top-1 -right-1 h-5 w-5 cursor-pointer bg-red-400' : 'hidden'}>
                                                                         <MdClose color='white' />
                                                                     </div>

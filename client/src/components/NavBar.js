@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
+import { Tooltip } from "@material-tailwind/react";
 
 const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
     const navigate = useNavigate();
@@ -44,20 +45,26 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
 
     return (
         <>
-            <nav className={`z-20 border-b-[1px] bg-white border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
+            <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to='/'>
-                        <span className="cursor-pointer self-center text-2xl text-[#019267] font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
+                        <span className="cursor-pointer self-center text-2xl text-white font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
                     </Link>
                     <div className="flex items-center md:order-2">
                         {/* Dark mode button */}
-                        <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
-                            {
-                                theme === 'light'
-                                    ? <FaMoon color='#3C4048' />
-                                    : <FaSun color='#CFD2CF' />
-                            }
-                        </div>
+                        <Tooltip
+                            className='z-30 p-3'
+                            content="Dark Mode"
+                        >
+                            <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
+                                {
+                                    theme === 'light'
+                                        ? <FaMoon color='#3C4048' />
+                                        : <FaSun color='#CFD2CF' />
+                                }
+                            </div>
+                        </Tooltip>
+
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             <img
