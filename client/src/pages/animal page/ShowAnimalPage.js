@@ -53,6 +53,14 @@ const ShowAnimalPage = ({ loginStatus }) => {
     }
 
     useEffect(() => {
+        readDataAnimal(result => setItems(result));
+    }, [changeData])
+
+    useEffect(() => {
+        getLikeData((result) => setLikeData(result));
+    }, [updateLike])
+
+    useEffect(() => {
         const timeout = setTimeout(() => {
             searchAnimal(search, (result) => setItems(result));
         }, 500)
@@ -60,16 +68,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
         return () => {
             clearTimeout(timeout)
         }
-
     }, [search]);
-
-    useEffect(() => {
-        readDataAnimal(result => setItems(result));
-    }, [changeData])
-
-    useEffect(() => {
-        getLikeData((result) => setLikeData(result));
-    }, [updateLike])
 
     const tBody = <TableData
         setId={setId}
