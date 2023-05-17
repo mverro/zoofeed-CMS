@@ -29,7 +29,7 @@ function App() {
     if (localStorage.getItem('access_token')) {
       readDataUser(result => setUserData(result))
     }
-  }, [userCheck])
+  }, [loginStatus])
 
   return (
     <>

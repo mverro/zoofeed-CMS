@@ -5,6 +5,7 @@ import Pagination from '../../components/Pagination'
 import ModalAdd from './components/ModalAdd'
 import ModalDetail from './components/ModalDetail'
 import ModalEdit from './components/ModalEdit'
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 const ShowFoodPage = ({ loginStatus }) => {
     const [items, setItems] = useState([]);
@@ -131,7 +132,7 @@ const ShowFoodPage = ({ loginStatus }) => {
                                                     {item.stock}
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    {item.price}
+                                                    <FormatRupiah value={item.price} />
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className='flex gap-5'>

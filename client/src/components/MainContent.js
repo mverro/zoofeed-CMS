@@ -45,6 +45,8 @@ const MainContent = ({
                     <LoginPage
                         loginStatus={loginStatus}
                         loginCbHandler={loginCbHandler}
+                        userCheck={userCheck}
+                        setUserCheck={setUserCheck}
                     />} />
                 <Route path='register' element={<SignUpPage loginCbHandler={loginCbHandler} />} />
                 <Route path='animals' element={<AnimalPage />}>
@@ -53,19 +55,19 @@ const MainContent = ({
                 <Route path='foods' element={<FoodPage />}>
                     <Route path='' element={<ShowFoodPage loginStatus={loginStatus} />} />
                 </Route>
-                <Route path='classType' element={<ClassTypePage />}>
+                <Route path='classTypes' element={<ClassTypePage />}>
                     <Route path='' element={<ShowClassTypePage />}></Route>
                 </Route>
-                <Route path='habitat' element={<HabitatPage />}>
+                <Route path='habitats' element={<HabitatPage />}>
                     <Route path='' element={<ShowHabitatPage />}></Route>
                 </Route>
-                <Route path='transaction' element={<PaymentPage />}>
+                <Route path='transactions' element={<PaymentPage />}>
                     <Route path='' element={<ShowPaymentPage />}></Route>
                 </Route>
-                <Route path='ticket' element={<TicketPage />}>
+                <Route path='tickets' element={<TicketPage />}>
                     <Route path='' element={<ShowTicketPage />}></Route>
                 </Route>
-                <Route path='userTicket' element={<UserTicketPage />}>
+                <Route path='userTickets' element={<UserTicketPage />}>
                     <Route path='' element={<ShowUserTicketPage />}></Route>
                 </Route>
                 <Route path='profile' element={
@@ -76,7 +78,7 @@ const MainContent = ({
                         <UserInfoPage
                             userData={userData}
                         />}></Route>
-                    <Route path='animals-care' element={<AnimalCarePage />} />
+                    <Route path='animals-cares' element={<AnimalCarePage />} />
                 </Route>
                 <Route path='profile' element={
                     <ProfilePage

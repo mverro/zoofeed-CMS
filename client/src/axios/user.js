@@ -4,10 +4,8 @@ import Swal from 'sweetalert2'
 const URL = 'http://localhost:3000/api/users';
 const token = localStorage.getItem('access_token');
 
-const login = async (datas, cb, regis) => {
+const login = async (datas, loginCbHandler, isRegis) => {
     try {
-        const isRegis = regis || false;
-
         let result = await axios({
             method: 'POST',
             url: URL + '/login',
@@ -16,11 +14,15 @@ const login = async (datas, cb, regis) => {
 
         const access_token = result.data.access_token;
         localStorage.setItem('access_token', access_token);
-        await cb(true)
 
         if (!isRegis) {
-            window.location.reload();
+            await Swal.fire(
+                'Login success!',
+                'congratulation',
+                'success'
+            )
         }
+        loginCbHandler(true);
     } catch (err) {
         console.log(err)
     }
@@ -56,8 +58,6 @@ const createUser = async (datas, loginCbHandler) => {
             'account has been created',
             'success'
         )
-
-        window.location.reload();
 
     } catch (e) {
         console.log(e)

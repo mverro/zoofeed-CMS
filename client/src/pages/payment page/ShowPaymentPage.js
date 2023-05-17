@@ -6,6 +6,7 @@ import {
 } from "../../axios/payment";
 import { GrCheckboxSelected, GrCheckbox } from "react-icons/gr";
 import Pagination from '../../components/Pagination';
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 const ShowPaymentPage = () => {
   const [Payment, setPayment] = useState([]);
@@ -24,12 +25,12 @@ const ShowPaymentPage = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       paymentFiltered(userName, (result) => setPayment(result.data));
-    },500)
+    }, 500)
 
-    return () =>{
+    return () => {
       clearTimeout(timeout)
     }
-    
+
   }, [userName]);
 
   const handleFilterChange = (event) => {
@@ -129,7 +130,9 @@ const ShowPaymentPage = () => {
                       <div className="flex gap-3">{item.user.name}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex gap-3">{item.total}</div>
+                      <div className="flex gap-3">
+                        <FormatRupiah value={item.total} />
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex gap-3">{item.method}</div>

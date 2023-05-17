@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { login } from '../../axios/user'
 import { Link, useNavigate } from 'react-router-dom'
 
-const LoginPage = ({ loginCbHandler, loginStatus }) => {
+const LoginPage = ({ loginCbHandler, loginStatus, userCheck, setUserCheck }) => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: '',

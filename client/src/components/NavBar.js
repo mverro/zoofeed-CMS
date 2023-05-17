@@ -44,10 +44,10 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
 
     return (
         <>
-            <nav className={`z-20 bg-[#019267] border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
+            <nav className={`z-20 border-b-[1px] bg-white border-gray-200 dark:bg-gray-800 fixed w-full dark:border-b-[1px] dark:border-slate-500`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to='/'>
-                        <span className="cursor-pointer self-center text-2xl text-slate-100 font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
+                        <span className="cursor-pointer self-center text-2xl text-[#019267] font-semibold whitespace-nowrap dark:text-white">Zoo Feed</span>
                     </Link>
                     <div className="flex items-center md:order-2">
                         {/* Dark mode button */}

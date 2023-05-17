@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getTicket } from "../../axios/ticket";
 import { FaEdit } from "react-icons/fa";
 import ModalEdit from './components/ModalEdit';
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 const ShowPaymentPage = () => {
   const [ticket, setTicket] = useState([]);
@@ -67,7 +68,9 @@ const ShowPaymentPage = () => {
                       <div className="flex gap-3">{item.stock}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex gap-3">{item.ticketType.price}</div>
+                      <div className="flex gap-3">
+                        <FormatRupiah value={item.ticketType.price} />
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="cursor-pointer" onClick={() => {
