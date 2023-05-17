@@ -1,4 +1,4 @@
-const { user, role, animal } = require("../models");
+const { user, role, animal,sequelize } = require("../models");
 const fs = require("fs");
 const { decryptPwd } = require("../helper/encrypt");
 const { tokenGenerator } = require("../helper/jsonwebtoken");
@@ -34,11 +34,14 @@ class UserController {
   }
 
   static async update(req, res) {
+    const t = await sequelize.transaction(); 
+  
     try {
       const id = +req.params.id;
-      const temp = await user.findByPk(id);
+      const temp = await user.findByPk(id, { transaction: t });
       const tempImage = temp.imageUrl;
       const { name, age, email, imageUrl } = req.body;
+
       let result = await user.update(
         {
           name: name,
@@ -46,14 +49,25 @@ class UserController {
           email: email,
           imageUrl: imageUrl,
         },
-        { where: { id: id } }
+        { where: { id: id }, transaction: t }
       );
-      checkUpload(tempImage,imageUrl)
-      res.status(200).json(result);
+  
+      let emailFound = await user.findOne({ where: { id: id }, transaction: t });
+      checkUpload(tempImage, imageUrl); 
+  
+      let access_token = tokenGenerator(emailFound);
+  
+      await t.commit();
+  
+      res.status(200).json({
+        access_token: access_token,
+      });
     } catch (err) {
+      await t.rollback();
       res.status(500).json({ message: err.message });
     }
   }
+  
 
   static async delete(req, res) {
     try {

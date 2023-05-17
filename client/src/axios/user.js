@@ -94,7 +94,7 @@ const updateUser = async (id, datas, cb) => {
             title: 'Profile Update successfully'
           })
         cb();
-        // window.location.reload();
+        window.location.reload();
     } catch (error) {
         console.log(error);
     }
