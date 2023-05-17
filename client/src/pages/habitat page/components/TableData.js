@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaEdit, FaTrash, FaEye } from 'react-icons/fa'
+import { FaEye } from 'react-icons/fa'
 
 const TableData = ({ habitat }) => {
     return (

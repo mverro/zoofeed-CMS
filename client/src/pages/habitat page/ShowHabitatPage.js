@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getHabitat } from '../../axios/habitat';
+import Table from '../../components/Table';
 import TableHead from '../../components/TableHead';
 import TableData from './components/TableData';
 
@@ -11,20 +12,18 @@ const ShowHabitatPage = () => {
         getHabitat((result) => setHabitat(result));
     }, [])
 
+    const tBody = <TableData
+        habitat={habitat}
+    />
+
     return (
         <>
             <div className="p-4 sm:ml-64 h-min pt-[85px]">
                 {/* Table */}
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <TableHead
-                            tableHead={tableHead}
-                        />
-                        <TableData
-                            habitat={habitat}
-                        />
-                    </table>
-                </div>
+                <Table
+                    tHead={tableHead}
+                    tBody={tBody}
+                />
             </div>
         </>
     )
