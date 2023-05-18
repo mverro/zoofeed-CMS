@@ -34,11 +34,10 @@ class UserController {
   }
 
   static async update(req, res) {
-    const t = await sequelize.transaction(); 
-  
+
     try {
       const id = +req.params.id;
-      const temp = await user.findByPk(id, { transaction: t });
+      const temp = await user.findByPk(id);
       const tempImage = temp.imageUrl;
       const { name, age, email, imageUrl } = req.body;
 
@@ -49,21 +48,18 @@ class UserController {
           email: email,
           imageUrl: imageUrl,
         },
-        { where: { id: id }, transaction: t }
+        { where: { id: id }}
       );
   
-      let emailFound = await user.findOne({ where: { id: id }, transaction: t });
+      let emailFound = await user.findOne({ where: { id: id }});
       checkUpload(tempImage, imageUrl); 
   
       let access_token = tokenGenerator(emailFound);
-  
-      await t.commit();
   
       res.status(200).json({
         access_token: access_token,
       });
     } catch (err) {
-      await t.rollback();
       res.status(500).json({ message: err.message });
     }
   }
