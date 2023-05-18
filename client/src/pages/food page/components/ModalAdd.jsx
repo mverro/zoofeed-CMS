@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { createData } from '../../../axios/food';
-import { Link, useNavigate } from 'react-router-dom'
 
 const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck, changeData, setChangeData }) => {
-    const navigation = useNavigate();
-    const [image, setImage] = useState("https://fakeimg.pl/350x200/");
-    const [classType, setClassType] = useState([]);
-    const [habitat, setHabitat] = useState([]);
     const [form, setForm] = useState({
         name: "",
         type: "",
@@ -17,9 +12,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck, changeData, setChan
 
     function handleUploadChange(e) {
         let uploaded = e.target.files[0];
-
         setForm({ ...form, imageUrl: uploaded });
-        setImage(URL.createObjectURL(uploaded));
     }
 
     const submitHandler = () => {
@@ -32,6 +25,12 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, addCheck, changeData, setChan
         setShowModalAdd(false);
         document.body.style.overflow = 'unset';
     }
+
+    useEffect(() => {
+        if (showModalAdd) {
+            document.body.style.overflow = 'hidden';
+        }
+    }, [addCheck])
 
     return (
         <>

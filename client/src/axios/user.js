@@ -23,6 +23,7 @@ const login = async (datas, loginCbHandler, isRegis) => {
             )
         }
         loginCbHandler(true);
+        window.location.reload()
     } catch (err) {
         console.log(err)
     }

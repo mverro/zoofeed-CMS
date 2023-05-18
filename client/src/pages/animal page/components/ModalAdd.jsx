@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { createData } from '../../../axios/animal';
 import { getClassType } from '../../../axios/classType';
 import { getHabitat } from '../../../axios/habitat';
-import { Link, useNavigate } from 'react-router-dom'
 
 const ModalAdd = ({ showModalAdd, setShowModalAdd, modalCheck, changeData, setChangeData }) => {
-    const navigation = useNavigate();
-    const [image, setImage] = useState("https://fakeimg.pl/350x200/");
     const [classType, setClassType] = useState([]);
     const [habitat, setHabitat] = useState([]);
     const [form, setForm] = useState({
@@ -21,9 +18,7 @@ const ModalAdd = ({ showModalAdd, setShowModalAdd, modalCheck, changeData, setCh
 
     function handleUploadChange(e) {
         let uploaded = e.target.files[0];
-
         setForm({ ...form, imageUrl: uploaded });
-        setImage(URL.createObjectURL(uploaded));
     }
 
     const submitHandler = () => {

@@ -118,7 +118,7 @@ const ModalEdit = ({
                                                         <img
                                                             src={info.data.imageUrl}
                                                             className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="..."
+                                                            alt="Animal"
                                                             width="300px"
                                                         />
                                                     </div>

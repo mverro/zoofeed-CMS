@@ -52,6 +52,18 @@ const ShowAnimalPage = ({ loginStatus }) => {
         setModalCheck(!modalCheck);
     }
 
+    const detailHandler = (id) => {
+        setShowModalDetail(true);
+        setId(id)
+        setModalCheck(!modalCheck);
+    }
+
+    const editHandler = (id) => {
+        setShowModalEdit(true);
+        setModalCheck(!modalCheck);
+        setId(id);
+    }
+
     useEffect(() => {
         readDataAnimal(result => setItems(result));
     }, [changeData])
@@ -71,17 +83,13 @@ const ShowAnimalPage = ({ loginStatus }) => {
     }, [search]);
 
     const tBody = <TableData
-        setId={setId}
         likeData={likeData}
         currentPosts={currentPosts}
         animalChecked={animalChecked}
         animalUnchecked={animalUnchecked}
         deleteHandler={deleteHandler}
-        modalCheck={modalCheck}
-        setModalCheck={setModalCheck}
-        setShowModalDetail={setShowModalDetail}
-        setShowModalEdit={setShowModalEdit}
-        setShowModalAdd={setShowModalAdd}
+        detailHandler={detailHandler}
+        editHandler={editHandler}
     />
 
     return (
@@ -114,7 +122,7 @@ const ShowAnimalPage = ({ loginStatus }) => {
                         handleFilterChange={handleFilterChange}
                     />
                     <Button
-                        handleAdd={handleAdd}
+                        onClick={handleAdd}
                     />
                 </div>
                 <Table

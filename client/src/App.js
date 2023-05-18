@@ -18,16 +18,10 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('access_token')) {
-      setLoginStatus(true)
       readDataUser(result => setUserData(result))
+      setLoginStatus(true)
     } else {
       setLoginStatus(false)
-    }
-  }, [loginStatus])
-
-  useEffect(() => {
-    if (localStorage.getItem('access_token')) {
-      readDataUser(result => setUserData(result))
     }
   }, [loginStatus])
 
