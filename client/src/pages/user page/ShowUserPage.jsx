@@ -9,7 +9,7 @@ const ShowUserPage = () => {
 
     useEffect(() => {
         getAllUser((result) => setDatas(result));
-    })
+    }, [])
 
     const tBody = <TableData
         user={datas}
