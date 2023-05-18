@@ -51,6 +51,7 @@ const ModalEdit = ({
     console.log(form)
     updateStock(form, () => setChangeData(!changeData));
     setShowModalEdit(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
