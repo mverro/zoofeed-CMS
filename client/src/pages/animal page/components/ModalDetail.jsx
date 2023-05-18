@@ -189,7 +189,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, modalCheck }) =>
                                                                     <img
                                                                         className="w-14 h-14 rounded-lg object-cover hover:bg-black"
                                                                         src={food.imageUrl}
-                                                                        alt="Food image"
+                                                                        alt="Food"
                                                                     />
                                                                 </Tooltip>
                                                                 <div onClick={() => deleteFoodHandle(food.id)} className={isEdit ? 'flex items-center justify-center rounded-md absolute -top-1 -right-1 h-5 w-5 cursor-pointer bg-red-400' : 'hidden'}>

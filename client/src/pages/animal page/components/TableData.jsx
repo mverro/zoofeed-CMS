@@ -39,19 +39,11 @@ const TableData = (props) => {
                                 <div className='flex gap-3'>
                                     <div
                                         className='cursor-pointer'
-                                        onClick={() => {
-                                            props.setShowModalDetail(true);
-                                            props.setId(item.id)
-                                            props.setModalCheck(!props.modalCheck);
-                                        }}
+                                        onClick={() => props.detailHandler(item.id)}
                                     >
                                         <FaEye size={23} />
                                     </div>
-                                    <div className='cursor-pointer' onClick={() => {
-                                        props.setShowModalEdit(true);
-                                        props.setModalCheck(!props.modalCheck);
-                                        props.setId(item.id);
-                                    }}>
+                                    <div className='cursor-pointer' onClick={() => props.editHandler(item.id)}>
                                         <FaEdit size={23} color={'#19A7CE'} />
                                     </div>
                                     <div
@@ -66,7 +58,7 @@ const TableData = (props) => {
                     )
                 })
             }
-        </tbody>
+        </tbody >
     )
 }
 

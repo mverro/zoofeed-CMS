@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllUser } from '../../axios/user'
 import Table from '../../components/Table';
-import TableHead from '../../components/TableHead';
 import TableData from './components/TableData';
 
 const ShowUserPage = () => {
@@ -10,7 +9,7 @@ const ShowUserPage = () => {
 
     useEffect(() => {
         getAllUser((result) => setDatas(result));
-    })
+    }, [])
 
     const tBody = <TableData
         user={datas}

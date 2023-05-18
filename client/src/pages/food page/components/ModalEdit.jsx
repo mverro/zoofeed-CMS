@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { getClassType } from '../../../axios/classType';
-import { getHabitat } from '../../../axios/habitat';
 import { detailData, updateData } from '../../../axios/food';
 
 const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData, setChangeData }) => {
-    const navigation = useNavigate();
-    const [classType, setClassType] = useState([]);
-    const [habitat, setHabitat] = useState([]);
     const [info, setInfo] = useState({
         data: {},
         consumed: {}
@@ -100,7 +94,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
                                                         <img
                                                             src={info.data.imageUrl}
                                                             className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="..."
+                                                            alt="Food"
                                                             width="300px"
                                                         />
                                                     </div>

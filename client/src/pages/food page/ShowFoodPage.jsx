@@ -1,87 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { readDataAnimal, deleteData, searchAnimal } from '../../axios/animal';
-import ModalDetail from './components/ModalDetail';
-import ModalAdd from './components/ModalAdd';
-import Pagination from '../../components/Pagination';
-import ModalEdit from './components/ModalEdit';
-import { userLike, userUnlike, getLikeData } from '../../axios/animalUser';
-import TableData from './components/TableData';
-import Table from '../../components/Table';
-import Search from '../../components/Search';
-import Button from '../../components/Button';
+import React, { useState, useEffect } from 'react'
+import { readData, deleteDataF, searchFood } from '../../axios/food'
+import Pagination from '../../components/Pagination'
+import ModalAdd from './components/ModalAdd'
+import ModalDetail from './components/ModalDetail'
+import ModalEdit from './components/ModalEdit'
+import Table from '../../components/Table'
+import TableData from './components/TableData'
+import Search from '../../components/Search'
+import Button from '../../components/Button'
 
-
-const ShowAnimalPage = ({ loginStatus }) => {
+const ShowFoodPage = ({ loginStatus }) => {
+    const tHead = ['Name', 'Type', 'Stock', 'Price', 'Action'];
     const [items, setItems] = useState([]);
-    const [id, setId] = useState(0);
     const [showModalDetail, setShowModalDetail] = useState(false);
     const [showModalAdd, setShowModalAdd] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
-    const [updateLike, setUpdateLike] = useState(false);
-    const [modalCheck, setModalCheck] = useState(false);
-    const [changeData, setChangeData] = useState(false);
+    const [id, setId] = useState(0);
+    const [detailCheck, setdetailCheck] = useState(false);
+    const [editCheck, setEditCheck] = useState(false);
+    const [addCheck, setAddCheck] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(10);
     const [search, setSearch] = useState('');
-    const [likeData, setLikeData] = useState([]);
+    const [changeData, setChangeData] = useState(false);
 
     const lastPostIndex = currentPage * postPerPage;
     const firstPostPostIndex = lastPostIndex - postPerPage;
     const currentPosts = items.slice(firstPostPostIndex, lastPostIndex);
 
-    const tHead = ['ID', 'Name', 'Sex', 'Age', 'Check', 'Action'];
-
-    const animalChecked = (id) => {
-        userLike(id, () => setUpdateLike(!updateLike))
-    }
-
-    const animalUnchecked = (id) => {
-        userUnlike(id, () => setUpdateLike(!updateLike));
-    }
-
-    const deleteHandler = (id) => {
-        deleteData(id, () => setChangeData(!changeData));
-    }
+    useEffect(() => {
+        readData(result => setItems(result));
+    }, [changeData])
 
     const handleFilterChange = (event) => {
         setSearch(event.target.value);
     };
 
-    const handleAdd = () => {
-        setShowModalAdd(true);
-        setModalCheck(!modalCheck);
+    const detailHandler = (id) => {
+        setId(id);
+        setdetailCheck(!detailCheck);
+        setShowModalDetail(true);
+    }
+
+    const editHandler = (id) => {
+        setEditCheck(!editCheck);
+        setShowModalEdit(true);
+        setId(id);
+    }
+
+    const deleteHandler = (id) => {
+        deleteDataF(id, () => setChangeData(!changeData));
+    }
+
+    const addHandler = () => {
+        setShowModalAdd(true)
+        setAddCheck(!addCheck);
     }
 
     useEffect(() => {
-        readDataAnimal(result => setItems(result));
-    }, [changeData])
-
-    useEffect(() => {
-        getLikeData((result) => setLikeData(result));
-    }, [updateLike])
-
-    useEffect(() => {
         const timeout = setTimeout(() => {
-            searchAnimal(search, (result) => setItems(result));
+            searchFood(search, (result) => setItems(result));
         }, 500)
 
         return () => {
             clearTimeout(timeout)
         }
+
     }, [search]);
 
     const tBody = <TableData
-        setId={setId}
-        likeData={likeData}
         currentPosts={currentPosts}
-        animalChecked={animalChecked}
-        animalUnchecked={animalUnchecked}
         deleteHandler={deleteHandler}
-        modalCheck={modalCheck}
-        setModalCheck={setModalCheck}
-        setShowModalDetail={setShowModalDetail}
-        setShowModalEdit={setShowModalEdit}
-        setShowModalAdd={setShowModalAdd}
+        detailHandler={detailHandler}
+        editHandler={editHandler}
     />
 
     return (
@@ -89,14 +80,14 @@ const ShowAnimalPage = ({ loginStatus }) => {
             <div className="p-4 sm:ml-64 pt-[85px] h-min">
                 <ModalDetail
                     id={id}
-                    modalCheck={modalCheck}
+                    detailCheck={detailCheck}
                     showModalDetail={showModalDetail}
                     setShowModalDetail={setShowModalDetail}
                 />
                 <ModalAdd
                     changeData={changeData}
                     setChangeData={setChangeData}
-                    modalCheck={modalCheck}
+                    addCheck={addCheck}
                     showModalAdd={showModalAdd}
                     setShowModalAdd={setShowModalAdd}
                 />
@@ -104,17 +95,19 @@ const ShowAnimalPage = ({ loginStatus }) => {
                     id={id}
                     changeData={changeData}
                     setChangeData={setChangeData}
-                    modalCheck={modalCheck}
+                    editCheck={editCheck}
                     showModalEdit={showModalEdit}
                     setShowModalEdit={setShowModalEdit}
                 />
                 {/* Search Bar */}
                 <div className=' flex flex-wrap justify-between py-5'>
+                    {/* Search */}
                     <Search
                         handleFilterChange={handleFilterChange}
                     />
+                    {/* Button Add */}
                     <Button
-                        handleAdd={handleAdd}
+                        onClick={addHandler}
                     />
                 </div>
                 <Table
@@ -132,4 +125,4 @@ const ShowAnimalPage = ({ loginStatus }) => {
     )
 }
 
-export default ShowAnimalPage
+export default ShowFoodPage

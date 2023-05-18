@@ -7,12 +7,10 @@ import { addFA, deleteFA } from '../../../axios/animalFood';
 import { Tooltip } from "@material-tailwind/react";
 
 const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) => {
-    const [foods, setFoods] = useState([]);
     const [animals, setAnimals] = useState([]);
     const [modalAddAnimal, setModalAddAnimal] = useState(false);
     const [allAnimal, setAllAnimal] = useState([]);
     const [changeData, setChangeData] = useState(false)
-    const [allFood, setAllFood] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
     const [detail, setDetail] = useState({
         data: {},
