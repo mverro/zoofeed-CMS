@@ -3,6 +3,8 @@ import { FaEdit, FaTrash, FaEye } from 'react-icons/fa'
 import { FormatRupiah } from "@arismun/format-rupiah";
 
 const TableData = (props) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
     return (
         <tbody>
             {
@@ -12,7 +14,7 @@ const TableData = (props) => {
                             <td className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img
                                     className="w-8 h-8 rounded-full object-cover"
-                                    src={item.imageUrl}
+                                    src={`${protocol}//${host}:3000/${item.imageUrl}`}
                                     alt="user photo"
                                 />
                                 {item.name}

@@ -3,7 +3,7 @@ const fs = require("fs");
 const { decryptPwd } = require("../helper/encrypt");
 const { tokenGenerator } = require("../helper/jsonwebtoken");
 const {
-  checkUpload,
+  checkUpload,checkUserDelete
 } = require("../helper/checkfile");
 
 class UserController {
@@ -70,15 +70,7 @@ class UserController {
       const id = +req.params.id;
 
       const temp = await user.findByPk(id);
-      if (temp !== null) {
-        let fileName = temp.dataValues.imageUrl;
-        const split = fileName.split("/");
-        fileName = split[split.length - 1];
-        if (fileName !== "portrait-placeholder.png") {
-          let deletefile = fs.unlinkSync(`./public/images/${fileName}`);
-        }
-      }
-
+      checkUserDelete(temp);
       let result = await user.destroy({
         where: { id: id },
       });

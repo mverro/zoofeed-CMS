@@ -8,7 +8,7 @@ async function generateQRCode(data,userId,orderId,ticketTypeId) {
       const name = `QR-${userId}-${orderId}-${ticketTypeId}-${new Date().getTime()}.png`
       const qrImagePath = path.join(__dirname, '..', 'public', 'tickets', name);
       await qr.toFile(qrImagePath, stJson);
-      const barcode = `http://localhost:${process.env.PORT}/tickets/${name}`;
+      const barcode = `tickets/${name}`;
       return barcode;
     } catch (err) {
       throw err;

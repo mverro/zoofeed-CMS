@@ -4,6 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Tooltip } from "@material-tailwind/react";
 
 const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [theme, setTheme] = useState("light")
@@ -71,7 +73,7 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
                                 ref={imgRef}
                                 onClick={() => setOpen(!open)}
                                 className="w-10 h-10 rounded-full object-cover"
-                                src={userData.imageUrl}
+                                src={`${protocol}//${host}:3000/${userData.imageUrl}`}
                                 alt="user"
                             />
                         </button>

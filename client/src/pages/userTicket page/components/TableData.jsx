@@ -2,6 +2,8 @@ import React from 'react'
 import { GrCheckboxSelected, GrCheckbox } from "react-icons/gr";
 
 const TableData = (props) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
     return (
         <tbody>
             {props.currentPosts.map((item) => {
@@ -33,7 +35,7 @@ const TableData = (props) => {
                         <td className="px-6 py-4">
                             <img
                                 className="w-12 h-12 object-cover"
-                                src={item.barcode}
+                                src={`${protocol}//${host}:3000/${item.barcode}`}
                                 alt="user photo"
                             />
                         </td>

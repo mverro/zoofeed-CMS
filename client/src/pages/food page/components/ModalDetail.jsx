@@ -7,6 +7,8 @@ import { addFA, deleteFA } from '../../../axios/animalFood';
 import { Tooltip } from "@material-tailwind/react";
 
 const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
     const [animals, setAnimals] = useState([]);
     const [modalAddAnimal, setModalAddAnimal] = useState(false);
     const [allAnimal, setAllAnimal] = useState([]);
@@ -132,7 +134,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                     <div className='bg-gray-50 dark:bg-slate-800 h-auto w-[20%] mr-3 shadow-lg rounded-md p-3'>
                                         <img
                                             className="w-24 h-24 rounded-lg object-cover"
-                                            src={detail.data.imageUrl}
+                                            src={`${protocol}//${host}:3000/${detail.data.imageUrl}`}
                                         />
                                         <p className='text-lg font-semibold dark:text-slate-100'>{detail.data.name}</p>
                                     </div>
@@ -172,7 +174,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                                                     >
                                                                         <img
                                                                             className="w-14 h-14 rounded-lg object-cover"
-                                                                            src={animal.imageUrl}
+                                                                            src={`${protocol}//${host}:3000/${animal.imageUrl}`}
                                                                             alt="Animal image"
                                                                         />
                                                                     </Tooltip>

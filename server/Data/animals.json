@@ -9,7 +9,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-27T19:39:07.251Z",
 		"updatedAt" : "2023-03-27T19:39:07.251Z",
-		"imageUrl" : "http://localhost:3000/images/orang_utan.jpg"
+		"imageUrl" : "images/orang_utan.jpg"
 	},
 	{
 		"name" : "Owa Jawa",
@@ -21,7 +21,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-27T19:45:12.478Z",
 		"updatedAt" : "2023-03-27T19:45:12.478Z",
-		"imageUrl" : "http://localhost:3000/images/owa_jawa.png"
+		"imageUrl" : "images/owa_jawa.png"
 	},
 	{
 		"name" : "Harimau Sumatera",
@@ -33,7 +33,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-27T19:31:08.420Z",
 		"updatedAt" : "2023-03-29T05:10:13.794Z",
-		"imageUrl" : "http://localhost:3000/images/harimau_sumatra.jpg"
+		"imageUrl" : "images/harimau_sumatra.jpg"
 	},
 	{
 		"name" : "Jalak Bali",
@@ -45,7 +45,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-29T18:51:53.232Z",
 		"updatedAt" : "2023-03-29T18:51:53.232Z",
-		"imageUrl" : "http://localhost:3000/images/jalak_bali.jpg"
+		"imageUrl" : "images/jalak_bali.jpg"
 	},
 	{
 		"name" : "Jerapah",
@@ -57,7 +57,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-29T19:22:12.663Z",
 		"updatedAt" : "2023-03-29T19:22:12.663Z",
-		"imageUrl" : "http://localhost:3000/images/jerapah.jpg"
+		"imageUrl" : "images/jerapah.jpg"
 	},
 	{
 		"name" : "Cendrawasih",
@@ -69,7 +69,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-29T18:37:35.031Z",
 		"updatedAt" : "2023-03-29T22:06:24.172Z",
-		"imageUrl" : "http://localhost:3000/images/cendrawasih.jpg"
+		"imageUrl" : "images/cendrawasih.jpg"
 	},
 	{
 		"name" : "Orca",
@@ -81,7 +81,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-30T05:39:21.030Z",
 		"updatedAt" : "2023-03-30T05:39:21.030Z",
-		"imageUrl" : "http://localhost:3000/images/orca.jpg"
+		"imageUrl" : "images/orca.jpg"
 	},
 	{
 		"name" : "Kuda",
@@ -93,7 +93,7 @@
 		"like" : 0,
 		"createdAt" : "2023-03-30T17:28:17.357Z",
 		"updatedAt" : "2023-03-30T17:28:17.357Z",
-		"imageUrl" : "http://localhost:3000/images/kuda.jpg"
+		"imageUrl" : "images/kuda.jpg"
 	},
 	{
 		"name" : "Kapibara",
@@ -105,6 +105,6 @@
 		"like" : 0,
 		"createdAt" : "2023-03-31T03:46:22.527Z",
 		"updatedAt" : "2023-03-31T03:46:22.527Z",
-		"imageUrl" : "http://localhost:3000/images/kapibara.jpg"
+		"imageUrl" : "images/kapibara.jpg"
 	}
 ]

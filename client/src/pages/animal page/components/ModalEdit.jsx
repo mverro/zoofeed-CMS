@@ -11,6 +11,9 @@ const ModalEdit = ({
     changeData,
     setChangeData
 }) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
+    const [isHandle, setisHandle] = useState(false);
     const [classType, setClassType] = useState([]);
     const [habitat, setHabitat] = useState([]);
     const [info, setInfo] = useState({
@@ -18,6 +21,7 @@ const ModalEdit = ({
         classTypeData: {},
         habitatData: {},
     });
+    
     const [form, setForm] = useState({
         name: "",
         age: 0,
@@ -30,6 +34,7 @@ const ModalEdit = ({
 
     const closeHandle = () => {
         setShowModalEdit(false);
+        setisHandle(false);
         document.body.style.overflow = 'unset';
     }
 
@@ -70,6 +75,7 @@ const ModalEdit = ({
     function handleUploadChange(e) {
         let uploaded = e.target.files[0];
         setForm({ ...form, imageUrl: uploaded });
+        setisHandle(true);
         setInfo((prevState) => {
             return {
                 ...prevState,
@@ -85,6 +91,7 @@ const ModalEdit = ({
         updateData(id, form, () => setChangeData(!changeData));
         document.body.style.overflow = 'unset';
         setShowModalEdit(false);
+        setisHandle(false);
     };
 
     return (
@@ -115,12 +122,21 @@ const ModalEdit = ({
                                                 </div>
                                                 <div className="overflow-clip w-1/2 pl-5">
                                                     <div className="mb-2">
-                                                        <img
+                                                        {isHandle? <>
+                                                            <img
                                                             src={info.data.imageUrl}
                                                             className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                             alt="Animal"
                                                             width="300px"
                                                         />
+                                                        </>:<>
+                                                        <img
+                                                            src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
+                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
+                                                            alt="Animal"
+                                                            width="300px"
+                                                        />
+                                                        </>}
                                                     </div>
                                                     <input
                                                         onChange={handleUploadChange}

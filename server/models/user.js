@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         beforeCreate: function (user, options) {
           user.password = encryptPwd(user.password);
           user.imageUrl =
-            "https://merritthealthcare.com/wp-content/uploads/2021/12/portrait-placeholder.png";
+            "images/portrait-placeholder.png";
         },
       },
       sequelize,

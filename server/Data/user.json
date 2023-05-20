@@ -5,6 +5,7 @@
       "password": "user",
       "age": 10,
       "roleId": 1,
+      "imageUrl" : "images/portrait-placeholder.png",
       "createdAt": "2023-03-28T10:00:00.000Z",
       "updatedAt": "2023-03-28T10:00:00.000Z"
     },
@@ -14,6 +15,7 @@
         "password": "admin",
         "age": 25,
         "roleId": 2,
+        "imageUrl" : "images/portrait-placeholder.png",
         "createdAt": "2023-03-28T10:00:00.000Z",
         "updatedAt": "2023-03-28T10:00:00.000Z"
       }

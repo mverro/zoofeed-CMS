@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { detailData, updateData } from '../../../axios/food';
 
 const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData, setChangeData }) => {
+    const host = window.location.hostname;
+    const protocol = window.location.protocol;
+    const [isHandle, setisHandle] = useState(false);
     const [info, setInfo] = useState({
         data: {},
         consumed: {}
@@ -17,6 +20,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
 
     const closeHandle = () => {
         setShowModalEdit(false);
+        setisHandle(false);
         document.body.style.overflow = 'unset';
     }
 
@@ -46,6 +50,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
     function handleUploadChange(e) {
         let uploaded = e.target.files[0];
         setForm({ ...form, imageUrl: uploaded });
+        setisHandle(true);
         setInfo((prevState) => {
             return {
                 ...prevState,
@@ -61,6 +66,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
         updateData(id, form, () => setChangeData(!changeData));
         document.body.style.overflow = 'unset';
         setShowModalEdit(false);
+        setisHandle(false);
     };
 
     return (
@@ -91,12 +97,22 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
                                                 </div>
                                                 <div className="overflow-clip w-1/2 pl-5">
                                                     <div className="mb-2">
+                                                    {isHandle?<>
                                                         <img
                                                             src={info.data.imageUrl}
                                                             className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                             alt="Food"
                                                             width="300px"
                                                         />
+                                                    </>:<>
+                                                    <img
+                                                            src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
+                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
+                                                            alt="Food"
+                                                            width="300px"
+                                                        />
+                                                    </>}
+                                                        
                                                     </div>
                                                     <input
                                                         onChange={handleUploadChange}

@@ -34,8 +34,7 @@ let upload = (req, res, next) => {
     if (!req.file) {
       return next();
     }
-    let imageUrl =
-      req.protocol + "://" + req.get("host") + "/images/" + req.file.filename;
+    let imageUrl = "images/" + req.file.filename;
     req.body.imageUrl = imageUrl;
     next();
   });
