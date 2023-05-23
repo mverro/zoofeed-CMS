@@ -1,19 +1,30 @@
-const { food, ticket, cart, cartFood, cartTicket } = require("../models");
+const { food, ticket, cart, cartFood, cartTicket,ticketType } = require("../models");
 const {sequelize} = require("../models");
 
 class CartController {
+
   static async getCart(req, res) {
     const userId = req.userData.id;
     try {
       let result = await cart.findAll({
-        include: [food, ticket],
+        include: [
+          {
+            model: food,
+          },
+          {
+            model: ticket,
+            include: [ticketType], 
+          },
+        ],
         where: { userId: +userId },
       });
+  
       res.status(200).json(result);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
   }
+  
 
   static async create(req, res) {
     try {
@@ -52,7 +63,7 @@ class CartController {
         const isTicket = getCart.dataValues.tickets.length;
   
         if (isTicket) {
-          // Handle case when cart has a ticket
+          
           const ticketData = getCart.tickets[0].dataValues;
           const ticketId = +ticketData.id;
           const qty = +getCart.qty;
@@ -69,7 +80,7 @@ class CartController {
           });
 
         } else {
-          // Handle case when cart only has food
+          
           console.log({masuk : 111})
           const foodData = getCart.food[0].dataValues;
           const foodId = +foodData.id;
