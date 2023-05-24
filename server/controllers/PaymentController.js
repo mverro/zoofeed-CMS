@@ -1,16 +1,18 @@
-const { user, sequelize, order, payment, userTicket } = require("../models");
+const { user, sequelize, order, payment, userTicket,cart,ticket,food,ticketType } = require("../models");
 const qr = require("qrcode");
 const { findOrderById } = require("../helper/findOrderById");
 const { generateQRCode } = require("../helper/generateQRCode");
-const { Op } = require('sequelize');
-
+const { Op } = require("sequelize");
 
 class PaymentController {
   static async get(req, res) {
     try {
       let result = await payment.findAll({
         include: [user, order],
-        order: [ ['status', 'ASC'],['id', 'ASC']]
+        order: [
+          ["status", "ASC"],
+          ["id", "ASC"],
+        ],
       });
 
       res.status(200).json(result);
@@ -24,12 +26,12 @@ class PaymentController {
       const { userName } = req.query;
 
       const result = await payment.findAll({
-        include: [
-          { model: user },
-          { model: order },
+        include: [{ model: user }, { model: order }],
+        order: [
+          ["status", "ASC"],
+          ["id", "ASC"],
         ],
-        order: [ ['status', 'ASC'],['id', 'ASC']],
-        where: { '$user.name$': { [Op.like]: `%${userName}%` } }
+        where: { "$user.name$": { [Op.like]: `%${userName}%` } },
       });
 
       res.status(200).json(result);
@@ -38,26 +40,50 @@ class PaymentController {
     }
   }
 
+
   static async getbyUser(req, res) {
     const userId = +req.userData.id;
-
+  
     try {
       let result = await payment.findAll({
-        include: [user, order],
-        order :[['status', 'ASC'],['id', 'ASC']],
+        include: [
+          {
+            model: user,
+          },
+          {
+            model: order,
+            include: [
+              {
+                model: cart,
+                include: [
+                  {
+                    model: ticket,
+                    include: [ticketType] 
+                  },
+                  food
+                ],
+              },
+            ],
+          },
+        ],
+        order: [
+          ['status', 'ASC'],
+          ['id', 'ASC'],
+        ],
         where: { userId: +userId },
       });
-
+  
       res.status(200).json(result);
     } catch (err) {
-      res.status(500).json({ mssage: err.message });
+      res.status(500).json({ message: err.message });
     }
   }
+  
+  
 
   static async update(req, res) {
     const t = await sequelize.transaction();
     try {
-      
       const method = req.body.method;
       const orderId = +req.body.orderId;
 
