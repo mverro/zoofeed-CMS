@@ -44,6 +44,7 @@ class PaymentController {
     try {
       let result = await payment.findAll({
         include: [user, order],
+        order :[['status', 'ASC'],['id', 'ASC']],
         where: { userId: +userId },
       });
 
