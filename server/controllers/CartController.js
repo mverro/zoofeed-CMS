@@ -50,7 +50,7 @@ class CartController {
       await sequelize.transaction(async (t) => {
         const getCart = await cart.findOne({
           include: [food, ticket],
-          where: { id, userId },
+          where: { id : id, userId : userId },
           transaction: t,
         });
   
@@ -81,7 +81,6 @@ class CartController {
 
         } else {
           
-          console.log({masuk : 111})
           const foodData = getCart.food[0].dataValues;
           const foodId = +foodData.id;
           const qty = +getCart.qty;
@@ -116,9 +115,68 @@ class CartController {
 
 
   static async update(req, res) {
+    let t;
     try {
-      let qty = +req.body.qty;
-      let id = +req.body.id;
+      t = await sequelize.transaction();
+      const qty = +req.body.qty;
+      const id = +req.body.id;
+      const isIncrease = +req.body.indicator;
+
+      const getCart = await cart.findOne({
+        include: [food, ticket],
+        where: { id : id, },
+        transaction: t,
+      });
+
+      if (!getCart) {
+        return res.status(404).json({
+          message: `Cart with id ${id} not found!`,
+        });
+      }
+      
+      const isTicket = getCart.dataValues.tickets.length;
+
+      if (isTicket) {
+        
+        const ticketData = getCart.tickets[0].dataValues;
+        const ticketId = +ticketData.id;
+
+        if(isIncrease === 1){
+          await ticket.decrement("stock", {
+            by: 1,
+            where: { id: ticketId },
+            transaction: t,
+          });
+
+        }else{
+          await ticket.increment("stock", {
+            by: 1,
+            where: { id: ticketId },
+            transaction: t,
+          });
+
+        }
+        
+      } else {
+        
+        const foodData = getCart.food[0].dataValues;
+        const foodId = +foodData.id;
+        if(isIncrease === 1){
+          await food.decrement("stock", {
+            by: 1,
+            where: { id: foodId },
+            transaction: t,
+          });
+
+        }else{
+          await food.increment("stock", {
+            by: 1,
+            where: { id: foodId },
+            transaction: t,
+          });
+        }
+        
+      }
 
       let result = await cart.update(
         {
@@ -126,8 +184,12 @@ class CartController {
         },
         {
           where: { id },
-        }
+        },
+        {transaction : t}
       );
+
+
+      await t.commit();
 
       result[0] === 1
         ? res.status(200).json({
@@ -137,6 +199,7 @@ class CartController {
             message: `Couldn't Update id:${id}.'`,
           });
     } catch (err) {
+      if (t) await t.rollback();
       res.status(500).json({ message: err.message });
     }
   }
