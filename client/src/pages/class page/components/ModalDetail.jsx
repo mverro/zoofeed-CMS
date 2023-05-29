@@ -15,7 +15,7 @@ const ModalDetail = (props) => {
 
   const setData = () => {
     detailClass(props.id, (result) => setClassData(result))
-    console.log(animals);
+    console.log(classData);
   }
 
   useEffect(() => {
