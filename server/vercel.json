@@ -10,9 +10,6 @@
       "use": "@vercel/static-build",
       "config": {
         "zeroConfig": true
-      },
-      "env": {
-        "DATABASE_URL": "postgres://default:BwfVY9tc7rKX@ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb"
       }
     },
     {
@@ -20,9 +17,6 @@
       "use": "@vercel/static-build",
       "config": {
         "zeroConfig": true
-      },
-      "env": {
-        "DATABASE_URL": "postgres://default:BwfVY9tc7rKX@ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb"
       }
     }
   ],
@@ -31,5 +25,8 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "postgres://default:BwfVY9tc7rKX@ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb"
+  }
 }
