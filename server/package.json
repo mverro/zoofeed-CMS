@@ -7,22 +7,22 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "initSeed": "sequelize-cli db:seed:all",
     "initDB": "sequelize-cli db:create && sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryandiaziz/zoo-feed.git"
+    "url": "git+https://github.com/mverro/zoofeed-CMS"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ryandiaziz/zoo-feed/issues"
+    "url": "https://github.com/mverro/zoofeed-CMS/issues"
   },
-  "homepage": "https://github.com/ryandiaziz/zoo-feed#readme",
+  "homepage": "https://github.com/mverro/zoofeed-CMS#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
