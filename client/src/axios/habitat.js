@@ -21,7 +21,7 @@ const detailHabitat = async (id, cb) => {
         let classDetail = await axios(
             {
                 method: "GET",
-                url: URL + id,
+                url: URL + '/detail/' + id,
             }
         );
 

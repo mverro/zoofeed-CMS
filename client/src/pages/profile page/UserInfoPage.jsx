@@ -60,7 +60,11 @@ const UserInfoPage = () => {
                             </div>
                             <input
                                 onChange={handleUploadChange}
-                                className="form-control"
+                                className="form-control file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-violet-50 file:text-[#019267]
+                                hover:file:bg-violet-100"
                                 type="file"
                                 id="formFile"
                             />
