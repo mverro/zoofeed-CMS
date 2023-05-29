@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "initSeed": "sequelize-cli db:seed:all",
-    "initDB": "sequelize-cli db:create && sequelize-cli db:migrate",
+    "initSeed": "npx sequelize-cli db:seed:all",
+    "initDB": "npx sequelize-cli db:create && sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -64,7 +64,7 @@
 		"age" : 5,
 		"sex" : "Female",
 		"description" : "Burung Cenderawasih adalah anggota famili Paradisaeidae dari ordo Passeriformes. Cenderawasih biasanya ditemukan di Indonesia seperti di bagian Timur Papua, Papua Nugini, pulau-pulau selat Torres, dan Australia timur. Burung anggota keluarga ini dikenal karena bulu burung jantan pada banyak jenisnya, terutama bulu yang sangat memanjang dan rumit yang tumbuh dari paruh, sayap atau kepalanya. Ukuran burung Cenderawasih mulai dari Cenderawasih raja pada 50 gram dan 15 cm hingga Cenderawasih paruh-sabit Hitam pada 110 cm dan Cenderawasih manukod jambul-bergulung pada 430 gram",
-		"classTypeId" : 1,
+		"classTypeId" : 4,
 		"habitatId" : 3,
 		"like" : 0,
 		"createdAt" : "2023-03-29T18:37:35.031Z",

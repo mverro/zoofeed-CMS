@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "admin",
-    "database": "zoo-feed-final",
-    "host": "127.0.0.1",
+    "username": "default",
+    "password": "BwfVY9tc7rKX",
+    "database": "verceldb",
+    "host": "ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com",
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "default",
+    "password": "BwfVY9tc7rKX",
+    "database": "verceldb",
+    "host": "ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "default",
+    "password": "BwfVY9tc7rKX",
+    "database": "verceldb",
+    "host": "ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com",
+    "dialect": "postgres"
   }
 }
