@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaEye } from 'react-icons/fa';
 
-const TableData = ({ data }) => {
+const TableData = ({ data, detailHandle }) => {
     const host = window.location.hostname;
     const protocol = window.location.protocol;
     return (
@@ -24,7 +24,7 @@ const TableData = ({ data }) => {
                             <td className="px-6 py-4">
                                 <div className='flex gap-3'>
                                     <div
-                                        className='cursor-pointer'
+                                        className='cursor-pointer' onClick={() => detailHandle(item.id)}
                                     >
                                         <FaEye size={23} />
                                     </div>

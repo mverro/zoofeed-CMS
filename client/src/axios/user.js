@@ -21,9 +21,9 @@ const login = async (datas, loginCbHandler, isRegis) => {
                 'congratulation',
                 'success'
             )
+            window.location.reload()
         }
         loginCbHandler(true);
-        window.location.reload()
     } catch (err) {
         console.log(err)
     }
@@ -46,6 +46,7 @@ const readDataUser = async (cb) => {
 
 const createUser = async (datas, loginCbHandler) => {
     try {
+        console.log(datas);
         await axios({
             method: 'POST',
             url: URL + "/create",
@@ -59,6 +60,7 @@ const createUser = async (datas, loginCbHandler) => {
             'account has been created',
             'success'
         )
+        window.location.reload()
 
     } catch (e) {
         console.log(e)
@@ -78,22 +80,22 @@ const updateUser = async (id, datas, cb) => {
         })
         const access_token = result.data.access_token;
         localStorage.setItem('access_token', access_token);
-        const Toast =  Swal.mixin({
+        const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 1000,
             timerProgressBar: true,
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-          })
-          
-          await Toast.fire({
+        })
+
+        await Toast.fire({
             icon: 'success',
             title: 'Profile Update successfully'
-          })
+        })
         cb();
         window.location.reload();
     } catch (error) {
