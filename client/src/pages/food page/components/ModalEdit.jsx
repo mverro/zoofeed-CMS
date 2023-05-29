@@ -106,7 +106,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
                                                         />
                                                     </>:<>
                                                     <img
-                                                            src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
+                                                            src={`https://zoofeed-api.vercel.app/${info.data.imageUrl}`}
                                                             className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                             alt="Food"
                                                             width="300px"

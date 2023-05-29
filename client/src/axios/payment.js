@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 const accessToken = localStorage.getItem("access_token");
-const URL = "http://localhost:3000/api/payment";
+const URL = "https://zoofeed-api.vercel.app/api/payment";
 
 const getPayment = async (cb) => {
   try {

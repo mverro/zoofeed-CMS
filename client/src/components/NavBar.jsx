@@ -73,7 +73,7 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
                                 ref={imgRef}
                                 onClick={() => setOpen(!open)}
                                 className="w-10 h-10 rounded-full object-cover"
-                                src={`${protocol}//${host}:3000/${userData.imageUrl}`}
+                                src={`https://zoofeed-api.vercel.app/${userData.imageUrl}`}
                                 alt="user"
                             />
                         </button>

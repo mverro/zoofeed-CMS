@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from "sweetalert2";
 const accessToken = localStorage.getItem("access_token");
-const URL = 'http://localhost:3000/api/userTicket'
+const URL = 'https://zoofeed-api.vercel.app/api/userTicket'
 
 const getUserTicket = async cb => {
     try {

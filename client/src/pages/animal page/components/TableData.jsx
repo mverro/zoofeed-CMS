@@ -16,7 +16,7 @@ const TableData = (props) => {
                             <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img
                                     className="w-8 h-8 rounded-full object-cover"
-                                    src={`${protocol}//${host}:3000/${item.imageUrl}`}
+                                    src={`https://zoofeed-api.vercel.app/${item.imageUrl}`}
                                     alt="user photo"
                                 />
                                 {item.name}

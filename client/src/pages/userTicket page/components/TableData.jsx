@@ -35,7 +35,7 @@ const TableData = (props) => {
                         <td className="px-6 py-4">
                             <img
                                 className="w-12 h-12 object-cover"
-                                src={`${protocol}//${host}:3000/${item.barcode}`}
+                                src={`https://zoofeed-api.vercel.app/${item.barcode}`}
                                 alt="user photo"
                             />
                         </td>

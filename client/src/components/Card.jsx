@@ -21,7 +21,7 @@ const Card = (props) => {
                 likeData.map(item => {
                     return (
                         <div key={item.id} className="h-min rounded-md shadow-lg overflow-hidden bg-white w-[300px] hover:bg-slate-100 relative dark:bg-gray-700">
-                            <img src={`${protocol}//${host}:3000/${item.imageUrl}`} alt="Image" className='h-56 w-full object-cover object-top' />
+                            <img src={`https://zoofeed-api.vercel.app/${item.imageUrl}`} alt="Image" className='h-56 w-full object-cover object-top' />
                             <div className='px-6 pb-4'>
                                 <div className='border-b-2 text-center font-noto font-bold text-xl py-3 text-slate-700 dark:text-slate-100'>{item.name}</div>
                                 <div className='flex flex-wrap justify-center'>
