@@ -7,9 +7,9 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node scripts/initDB.js && node scripts/initSeed.js && node app.js",
     "initSeed": "npx sequelize-cli db:seed:all",
-    "initDB": "npx sequelize-cli db:create && sequelize-cli db:migrate",
+    "initDB": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
