@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { createUser } from '../../axios/user'
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Checkbox } from "@material-tailwind/react";
+import { Checkbox, Input } from "@material-tailwind/react";
 import Image from '../../assets/zoofeed-bg.png'
 import Logo from '../../assets/zoo_feed-01.png'
 
@@ -85,65 +85,57 @@ const SignUpPage = ({ loginCbHandler }) => {
             </div>
             {/* content */}
             <div className='w-full h-full flex justify-end z-50'>
-                <div className="dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 z-50">
+                <div className="md:mt-0 sm:max-w-md xl:p-0 z-50">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <img src={Logo} alt="Logo" className='w-1/4 m-auto' />
-                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        <h1 className="text-xl font-inter font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Create an account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" onSubmit={formik.handleSubmit}>
-                            <div>
-                                <label className="block text-base font-medium text-gray-900 dark:text-white">Name</label>
-                                <input
+                        <form onSubmit={formik.handleSubmit}>
+                            <div className='space-y-4'>
+                                <Input
+                                    variant='outlined'
+                                    label='Name'
                                     name='name'
-                                    placeholder='Name'
                                     onChange={handleForm}
                                     onBlur={() => handlefocus('name')}
-                                    className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
                                 />
                                 {
                                     name ?
                                         <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.name}</span> : null
                                 }
-                            </div>
-                            <div>
-                                <label className="block text-base font-medium text-gray-900 dark:text-white">Age</label>
-                                <input
+                                <Input
+                                    variant='outlined'
+                                    label='Age'
                                     name='age'
-                                    placeholder='age'
                                     onChange={handleForm}
                                     onBlur={() => handlefocus('age')}
-                                    className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
                                 />
                                 {
                                     age ?
                                         <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.age}</span> : null
                                 }
-                            </div>
-                            <div>
-                                <label className="block text-base font-medium text-gray-900 dark:text-white">Email</label>
-                                <input
+                                <Input
+                                    variant='outlined'
+                                    label='Email'
                                     name='email'
-                                    placeholder='Email'
                                     onChange={handleForm}
                                     onBlur={() => handlefocus('email')}
-                                    className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
                                 />
                                 {
                                     email ?
                                         <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.email}</span> : null
                                 }
-                            </div>
-                            <div className='flex flex-col'>
-                                <label className="block text-base font-medium text-gray-900 dark:text-white">Password</label>
-                                <input
+                                <Input
+                                    variant='outlined'
+                                    label='Password'
                                     type={`${showPass ? 'text' : 'password'}`}
                                     name='password'
-                                    placeholder='Password'
                                     onChange={handleForm}
                                     onBlur={() => handlefocus('password')}
-                                    className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
                                 />
+                            </div>
+                            <div className='flex flex-col'>
                                 <Checkbox
                                     onChange={showPassword}
                                     label="Show"
@@ -155,8 +147,8 @@ const SignUpPage = ({ loginCbHandler }) => {
                                         <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.password}</span> : null
                                 }
                             </div>
-                            <button type="submit" className="w-full text-white bg-[#019267] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign Up</button>
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                            <button type="submit" className="mt-5 w-full text-white bg-[#019267] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign Up</button>
+                            <p className="mt-3 text-sm font-light text-gray-500 dark:text-gray-400">
                                 Already have an account? <Link to={'/login'} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</Link>
                             </p>
                         </form>

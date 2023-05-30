@@ -46,7 +46,7 @@ const TableData = (props) => {
                                         <FaEye size={23} className='fill-[#3BACB6]' />
                                     </div>
                                     <div className='cursor-pointer' onClick={() => props.editHandler(item.id)}>
-                                        <FaEdit size={23} className='fill-[#53BF9D]' />
+                                        <FaEdit size={23} className='fill-gray-500' />
                                     </div>
                                     <div
                                         className='cursor-pointer'

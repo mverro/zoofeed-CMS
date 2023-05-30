@@ -26,7 +26,7 @@ const TableData = ({ habitat, detailHandle }) => {
                                     <div
                                         className='cursor-pointer' onClick={() => detailHandle(item.id)}
                                     >
-                                        <FaEye size={23} />
+                                        <FaEye size={23} className='fill-[#3BACB6]' />
                                     </div>
                                 </div>
                             </td>

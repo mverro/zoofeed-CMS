@@ -97,22 +97,21 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
                                                 </div>
                                                 <div className="overflow-clip w-1/2 pl-5">
                                                     <div className="mb-2">
-                                                    {isHandle?<>
-                                                        <img
-                                                            src={info.data.imageUrl}
-                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="Food"
-                                                            width="300px"
-                                                        />
-                                                    </>:<>
-                                                    <img
-                                                            src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
-                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="Food"
-                                                            width="300px"
-                                                        />
-                                                    </>}
-                                                        
+                                                        {isHandle ? <>
+                                                            <img
+                                                                src={info.data.imageUrl}
+                                                                className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
+                                                                alt="Food"
+                                                                width="300px"
+                                                            />
+                                                        </> : <>
+                                                            <img
+                                                                src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
+                                                                className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
+                                                                alt="Food"
+                                                                width="300px"
+                                                            />
+                                                        </>}
                                                     </div>
                                                     <input
                                                         onChange={handleUploadChange}
@@ -133,7 +132,7 @@ const ModalEdit = ({ showModalEdit, setShowModalEdit, editCheck, id, changeData,
                                                     <input onChange={(e) => setForm({ ...form, price: e.target.value })} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="animal age" value={form.price} required />
                                                 </div>
                                             </div>
-                                            <button onClick={() => submitHandler()} type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Animal</button>
+                                            <button onClick={() => submitHandler()} type="submit" class="w-full text-white bg-[#019267] hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Animal</button>
                                         </form>
                                     </div>
                                 </div>

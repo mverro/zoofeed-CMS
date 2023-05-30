@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+module.exports = withMT({
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
@@ -8,9 +9,12 @@ module.exports = {
     extend: {
       backgroundImage: {
         'zoo': "url('assets/zoofeed-bg.png')",
+      },
+      fontFamily: {
+        'inter': ['Inter'],
       }
     },
   },
   plugins: [],
-}
+})
 

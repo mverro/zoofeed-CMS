@@ -28,20 +28,6 @@ const TableData = ({ user }) => {
                                         : 'Visitor'
                                 }
                             </td>
-                            <td className="px-6 py-4">
-                                <div className='flex gap-3'>
-                                    <div
-                                        className='cursor-pointer'
-                                    >
-                                        <FaEye size={23} />
-                                    </div>
-                                    <div
-                                        className='cursor-pointer'
-                                    >
-                                        <FaTrash size={20} color={'#F15A59'} />
-                                    </div>
-                                </div>
-                            </td>
                         </tr>
                     )
                 })
