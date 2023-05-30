@@ -131,7 +131,7 @@ const ModalEdit = ({
                                                             />
                                                             :
                                                             <img
-                                                                src={`http://54.206.202.155:3000/${info.data.imageUrl}`}
+                                                                src={`http://13.55.144.244:3000/${info.data.imageUrl}`}
                                                                 className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                                 alt="Animal"
                                                                 width="300px"

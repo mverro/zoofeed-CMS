@@ -52,7 +52,7 @@ const UserInfoPage = () => {
                         <div className="overflow-clip pl-5">
                             <div className="mb-2">
                                 <img
-                                    src={uploadImage || `https://zoofeed-api.vercel.app/${form.imageUrl}`}
+                                    src={uploadImage || `http://13.55.144.244:3000/${form.imageUrl}`}
                                     className="img-thumbnail h-24 w-24 object-cover rounded-full"
                                     alt="..."
                                     width="300px"

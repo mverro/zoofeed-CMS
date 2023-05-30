@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from "sweetalert2";
 const accessToken = localStorage.getItem("access_token");
-const URL = 'http://54.206.202.155:3000/api/userTicket'
+const URL = 'http://13.55.144.244:3000/api/userTicket'
 
 const getUserTicket = async cb => {
     try {

@@ -13,7 +13,7 @@ const TableData = ({ data, detailHandle }) => {
                             <th scope="row" className="flex gap-3 items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img
                                     className="w-8 h-8 rounded-full object-cover"
-                                    src={`https://zoofeed-api.vercel.app/${item.imageUrl}`}
+                                    src={`http://13.55.144.244:3000/${item.imageUrl}`}
                                     alt="user"
                                 />
                                 {item.name}

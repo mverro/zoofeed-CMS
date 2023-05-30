@@ -134,7 +134,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                     <div className='bg-gray-50 dark:bg-slate-800 h-auto w-[20%] mr-3 shadow-lg rounded-md p-3'>
                                         <img
                                             className="w-24 h-24 rounded-lg object-cover"
-                                            src={`https://zoofeed-api.vercel.app/${detail.data.imageUrl}`}
+                                            src={`http://13.55.144.244:3000/${detail.data.imageUrl}`}
                                         />
                                         <p className='text-lg font-semibold dark:text-slate-100'>{detail.data.name}</p>
                                     </div>
@@ -174,7 +174,7 @@ const ModalDetail = ({ showModalDetail, setShowModalDetail, id, detailCheck }) =
                                                                     >
                                                                         <img
                                                                             className="w-14 h-14 rounded-lg object-cover"
-                                                                            src={`https://zoofeed-api.vercel.app/${animal.imageUrl}`}
+                                                                            src={`http://13.55.144.244:3000/${animal.imageUrl}`}
                                                                             alt="Animal image"
                                                                         />
                                                                     </Tooltip>

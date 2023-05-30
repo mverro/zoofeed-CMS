@@ -80,7 +80,7 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
                                     variant="circular"
                                     alt="candice wu"
                                     className="cursor-pointer"
-                                    src={`${protocol}//${host}:3000/${userData.imageUrl}`}
+                                    src={`http://13.55.144.244:3000/${userData.imageUrl}`}
                                 />
                             </MenuHandler>
                             <MenuList>
