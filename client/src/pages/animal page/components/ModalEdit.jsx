@@ -122,36 +122,21 @@ const ModalEdit = ({
                                                 </div>
                                                 <div className="overflow-clip w-1/2 pl-5">
                                                     <div className="mb-2">
-                                                        {isHandle ? <>
+                                                        {isHandle ?
                                                             <img
-<<<<<<< HEAD
-                                                            src={info.data.imageUrl}
-                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="Animal"
-                                                            width="300px"
-                                                        />
-                                                        </>:<>
-                                                        <img
-                                                            src={`https://zoofeed-api.vercel.app/${info.data.imageUrl}`}
-                                                            className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
-                                                            alt="Animal"
-                                                            width="300px"
-                                                        />
-=======
                                                                 src={info.data.imageUrl}
                                                                 className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                                 alt="Animal"
                                                                 width="300px"
                                                             />
-                                                        </> : <>
+                                                            :
                                                             <img
-                                                                src={`${protocol}//${host}:3000/${info.data.imageUrl}`}
+                                                                src={`https://54.206.202.155:3000/${info.data.imageUrl}`}
                                                                 className="img-thumbnail h-24 w-24 object-cover rounded-full m-auto"
                                                                 alt="Animal"
                                                                 width="300px"
                                                             />
->>>>>>> ryandi-dev
-                                                        </>}
+                                                        }
                                                     </div>
                                                     <input
                                                         onChange={handleUploadChange}
