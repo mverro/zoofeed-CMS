@@ -10,7 +10,7 @@ const bodyParser = require("body-parser");
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres://default:BwfVY9tc7rKX@ep-tight-voice-970578-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb', {
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
   dialectModule: require('pg')
 });
 
