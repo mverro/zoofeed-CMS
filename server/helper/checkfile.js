@@ -7,7 +7,7 @@ const checkFileUpdate = (data, req) => {
       const split = fileName.split("/").slice(0, -1).join("/") + "/";
       const split2 = fileName.split("/");
       fileName = split2[split2.length - 1];
-      if (split === "https://54.206.202.155:3000/images/") {
+      if (split === "http://54.206.202.155:3000/images/") {
         fs.unlinkSync(`./public/images/${fileName}`);
       }
     }
