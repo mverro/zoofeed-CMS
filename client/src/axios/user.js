@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-const URL = 'http://localhost:3000/api/users';
+const URL = 'https://54.206.202.155:3000/api/users';
 const token = localStorage.getItem('access_token');
 
 const login = async (datas, loginCbHandler, isRegis) => {

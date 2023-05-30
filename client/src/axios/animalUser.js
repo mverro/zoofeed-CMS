@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:3000/api/animaluser';
+const URL = 'https://54.206.202.155:3000/api/animaluser';
 const token = localStorage.getItem('access_token');
 
 const userLike = async (id, cb) => {

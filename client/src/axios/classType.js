@@ -1,5 +1,5 @@
 import axios, { Axios } from "axios";
-const URL = "http://localhost:3000/api/classtypes";
+const URL = "https://54.206.202.155:3000/api/classtypes";
 
 const getClassType = async (cb) => {
     try {
