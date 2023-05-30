@@ -16,47 +16,47 @@ const SideBar = () => {
   const items = [
     {
       link: '/',
-      icon: <FaChartPie />,
+      icon: <FaChartPie className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Dashboard'
     },
     {
       link: 'animals',
-      icon: <FaStickerMule />,
+      icon: <FaStickerMule className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Animal'
     },
     {
       link: 'foods',
-      icon: <FaApple />,
+      icon: <FaApple className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Food'
     },
     {
       link: 'classTypes',
-      icon: <FaPaw />,
+      icon: <FaPaw className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Class'
     },
     {
       link: 'habitats',
-      icon: <FaMountain />,
+      icon: <FaMountain className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Habitat'
     },
     {
       link: 'users',
-      icon: <FaUser />,
+      icon: <FaUser className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'User'
     },
     {
       link: 'transactions',
-      icon: <FaCcVisa />,
+      icon: <FaCcVisa className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Transaction'
     },
     {
       link: 'tickets',
-      icon: <FaTicketAlt />,
+      icon: <FaTicketAlt className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'Ticket'
     },
     {
       link: 'userTickets',
-      icon: <FaTicketAlt />,
+      icon: <FaTicketAlt className="fill-[#384b42] dark:fill-[#9bb0a5]" />,
       label: 'User Ticket'
     },
   ]
@@ -70,7 +70,7 @@ const SideBar = () => {
         <div className="h-full px-3 py-4 overflow-y-auto bg-slate-100 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             {
-              items.map((item) => {
+              items.map((item, i) => {
                 return (
                   <SidebarMenu
                     link={item.link}

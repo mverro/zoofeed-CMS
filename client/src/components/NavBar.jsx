@@ -56,23 +56,23 @@ const NavBar = ({ loginCbHandler, userData, onProfile, setOnProfile }) => {
                         {/* Dark mode button */}
                         <Tooltip
                             className='z-30 p-3'
-                            content="Dark Mode"
+                            content={`${theme === 'light' ? 'Dark Mode' : 'Light Mode'}`}
                         >
-                            <div onClick={handleThemeSwitch} className='bg-white dark:bg-gray-800 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-gray-700'>
+                            <div onClick={handleThemeSwitch} className='hover:bg-slate-700 rounded-full p-2 cursor-pointer mr-7 dark:hover:bg-slate-700 h-8 w-8 flex justify-center items-center'>
                                 {
                                     theme === 'light'
-                                        ? <FaMoon color='#3C4048' />
-                                        : <FaSun color='#CFD2CF' />
+                                        ? <FaMoon className='fill-slate-200' />
+                                        : <FaSun color='#9bb0a5' />
                                 }
                             </div>
                         </Tooltip>
-
+                        {/* image icon */}
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             <img
                                 ref={imgRef}
                                 onClick={() => setOpen(!open)}
-                                className="w-10 h-10 rounded-full object-cover"
+                                className="w-8 h-8 rounded-full object-cover"
                                 src={`${protocol}//${host}:3000/${userData.imageUrl}`}
                                 alt="user"
                             />

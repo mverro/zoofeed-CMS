@@ -4,6 +4,7 @@ import { Tooltip } from "@material-tailwind/react";
 
 const ModalDetail = (props) => {
     const [habitats, setHabitats] = useState({});
+    const [animals, setAnimals] = useState([]);
     const host = window.location.hostname;
     const protocol = window.location.protocol;
 
@@ -14,8 +15,10 @@ const ModalDetail = (props) => {
 
     useEffect(() => {
         if (props.showModalDetail) {
-            detailHabitat(props.id, (result) => setHabitats(result))
-            console.log(habitats);
+            detailHabitat(props.id, (result) => {
+                setHabitats(result);
+                setAnimals(result.animals);
+            })
             document.body.style.overflow = 'hidden';
         }
     }, [props.modalCheck])
@@ -70,22 +73,22 @@ const ModalDetail = (props) => {
                                         </div>
                                         <div className='flex flex-wrap gap-2 items-center justify-center'>
                                             {
-                                                // habitats.animals.map((animal) => {
-                                                //     return (
-                                                //         <div className='relative'>
-                                                //             <Tooltip
-                                                //                 className='z-50 p-3'
-                                                //                 content={animal.name}
-                                                //             >
-                                                //                 <img
-                                                //                     className="w-14 h-14 rounded-lg object-cover hover:bg-black"
-                                                //                     src={`${protocol}//${host}:3000/${animal.imageUrl}`}
-                                                //                     alt="Food"
-                                                //                 />
-                                                //             </Tooltip>
-                                                //         </div>
-                                                //     )
-                                                // })
+                                                animals.map((animal) => {
+                                                    return (
+                                                        <div className='relative'>
+                                                            <Tooltip
+                                                                className='z-50 p-3'
+                                                                content={animal.name}
+                                                            >
+                                                                <img
+                                                                    className="w-14 h-14 rounded-lg object-cover hover:bg-black"
+                                                                    src={`${protocol}//${host}:3000/${animal.imageUrl}`}
+                                                                    alt="Food"
+                                                                />
+                                                            </Tooltip>
+                                                        </div>
+                                                    )
+                                                })
                                             }
                                         </div>
                                     </div>

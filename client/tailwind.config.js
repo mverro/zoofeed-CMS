@@ -5,7 +5,11 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'zoo': "url('assets/zoofeed-bg.png')",
+      }
+    },
   },
   plugins: [],
 }

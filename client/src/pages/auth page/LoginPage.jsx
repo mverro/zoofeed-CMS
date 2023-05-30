@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Checkbox } from "@material-tailwind/react";
+import Image from '../../assets/zoofeed-bg.png'
+import Logo from '../../assets/zoo_feed-01.png'
 
 const LoginPage = ({ loginCbHandler, loginStatus, userCheck, setUserCheck }) => {
     const navigate = useNavigate();
@@ -56,60 +58,72 @@ const LoginPage = ({ loginCbHandler, loginStatus, userCheck, setUserCheck }) => 
     };
     return (
         <>
-            <section className="relative bg-gray-50 dark:bg-gray-900">
-                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                Sign in to your account
-                            </h1>
-                            <form className="md:space-y-6" onSubmit={formik.handleSubmit}>
-                                <div>
-                                    <label className="block text-base font-medium text-gray-900 dark:text-white">Your Email</label>
-                                    <input
-                                        name='email'
-                                        placeholder='Email'
-                                        onChange={handleForm}
-                                        onBlur={() => handleFocus('email')}
-                                        className={`email-input bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
-                                    />
-                                    {
-                                        email ?
-                                            <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.email}</span>
-                                            : null
-                                    }
-                                </div>
-                                <div className='flex flex-col'>
-                                    <label className="block text-base font-medium text-gray-900 dark:text-white">Your Password</label>
-                                    <input
-                                        name='password'
-                                        type={`${showPass ? 'text' : 'password'}`}
-                                        placeholder='Password'
-                                        onChange={handleForm}
-                                        onBlur={handleFocus}
-                                        className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
-                                    />
-                                    <Checkbox
-                                        onChange={showPassword}
-                                        label="Show"
-                                        color='teal'
-                                        className='text-sm'
-                                    />
-                                    {
-                                        password ?
-                                            <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.password}</span>
-                                            : null
-                                    }
-                                </div>
-                                <button type='submit' className="w-full text-white bg-[#019267] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
-                                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <Link to={'/register'} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Create an account</Link>
-                                </p>
-                            </form>
-                        </div>
+            {/* bg image */}
+            <div className='w-4/5  h-full fixed -z-50'>
+                <div className='bg-black w-full h-full opacity-10 absolute'></div>
+                <img
+                    src={Image}
+                    alt="Background"
+                    className='h-full object-left-bottom object-cover'
+                />
+            </div>
+            {/* bg white left */}
+            <div className="fixed w-1/3 h-full right-0 bg-white -z-40">
+            </div>
+            {/* content */}
+            <div className="w-full h-full flex justify-end z-50">
+                <div className="dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 z-50">
+                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                        <img src={Logo} alt="Logo" className='w-1/4 m-auto' />
+                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            Sign in to your account
+                        </h1>
+                        <form className="md:space-y-6" onSubmit={formik.handleSubmit}>
+                            <div>
+                                <label className="block text-base font-medium text-gray-900 dark:text-white">Your Email</label>
+                                <input
+                                    name='email'
+                                    placeholder='Email'
+                                    onChange={handleForm}
+                                    onBlur={() => handleFocus('email')}
+                                    className={`email-input bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
+                                />
+                                {
+                                    email ?
+                                        <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.email}</span>
+                                        : null
+                                }
+                            </div>
+                            <div className='flex flex-col'>
+                                <label className="block text-base font-medium text-gray-900 dark:text-white">Your Password</label>
+                                <input
+                                    name='password'
+                                    type={`${showPass ? 'text' : 'password'}`}
+                                    placeholder='Password'
+                                    onChange={handleForm}
+                                    onBlur={handleFocus}
+                                    className={`bg-gray-50 border border-gray-300 focus-visible: text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
+                                />
+                                <Checkbox
+                                    onChange={showPassword}
+                                    label="Show"
+                                    color='teal'
+                                    className='text-sm'
+                                />
+                                {
+                                    password ?
+                                        <span className='text-pink-600 font-light text-sm mt-1'>{formik.errors.password}</span>
+                                        : null
+                                }
+                            </div>
+                            <button type='submit' className="w-full text-white bg-[#019267] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                Don’t have an account yet? <Link to={'/register'} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Create an account</Link>
+                            </p>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }
