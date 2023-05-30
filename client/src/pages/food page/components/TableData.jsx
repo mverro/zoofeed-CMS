@@ -31,15 +31,15 @@ const TableData = (props) => {
                             <td className="px-6 py-4">
                                 <div className='flex gap-5'>
                                     <div className='cursor-pointer' onClick={() => props.detailHandler(item.id)}>
-                                        <FaEye size={23} />
+                                        <FaEye size={23} className='fill-[#3BACB6]' />
                                     </div>
                                     <div onClick={() => props.editHandler(item.id)} className='cursor-pointer'>
-                                        <FaEdit size={23} color={'#19A7CE'} />
+                                        <FaEdit size={23} className='fill-gray-500' />
                                     </div>
                                     <div
                                         className='cursor-pointer'
                                         onClick={() => props.deleteHandler(item.id)}>
-                                        <FaTrash size={20} />
+                                        <FaTrash size={20} className='fill-[#F94C66]' />
                                     </div>
                                 </div>
                             </td>

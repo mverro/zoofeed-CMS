@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from "sweetalert2";
 const accessToken = localStorage.getItem("access_token");
-const URL = 'https://zoofeed-api.vercel.app/api/ticket'
+const URL = 'https://54.206.202.155:3000/api/ticket'
 
 const getTicket = async cb => {
     try {
@@ -15,7 +15,7 @@ const getTicket = async cb => {
     }
 }
 
-const getTicketId = async (id,cb) => {
+const getTicketId = async (id, cb) => {
     try {
         let dataItems = await axios({
             method: 'GET',
@@ -27,8 +27,8 @@ const getTicketId = async (id,cb) => {
     }
 }
 
-const updateStock = async (data,cb) => {
-    try{
+const updateStock = async (data, cb) => {
+    try {
         Swal.fire({
             title: 'Are you sure?',
             text: "Update the Stock?",
@@ -37,7 +37,7 @@ const updateStock = async (data,cb) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Update Stock'
-          }).then(async (result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 let result = await axios({
                     method: 'PUT',
@@ -46,20 +46,20 @@ const updateStock = async (data,cb) => {
                     headers: { access_token: `${accessToken}` }
                 })
                 await Swal.fire(
-                    'Update Success', 
+                    'Update Success',
                     'Ticket Id ' + data.id + ' has been updated',
                     'success'
                 )
                 cb()
             }
-          })
+        })
 
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
 
 export {
-    getTicket,updateStock, getTicketId
+    getTicket, updateStock, getTicketId
 }

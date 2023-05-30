@@ -33,7 +33,7 @@ const ProfileSideBar = () => {
                 aria-label="Sidebar"
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-800">
-                    <ul className="space-y-2 font-medium">
+                    <ul className="mt-5 space-y-2 font-medium">
                         {
                             items.map((item) => {
                                 return (

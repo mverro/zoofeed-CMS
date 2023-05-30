@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 const accessToken = localStorage.getItem("access_token");
-const URL = "https://zoofeed-api.vercel.app/api/payment";
+const URL = "https://54.206.202.155:3000/api/payment";
 
 const getPayment = async (cb) => {
   try {
@@ -49,8 +49,10 @@ const updatePayment = async (data, cb) => {
 const paymentFiltered = async (userName, cb) => {
   try {
     let response = await axios(
-       { method: "GET",
-        url: URL + `/filter?userName=${userName}`,}
+      {
+        method: "GET",
+        url: URL + `/filter?userName=${userName}`,
+      }
     );
     cb(response);
   } catch (error) {

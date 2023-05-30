@@ -5,7 +5,7 @@ import TableData from './components/TableData';
 import ModalDetail from './components/ModalDetail';
 
 const ShowClassTypePage = () => {
-    const [id, setId] = useState(null)
+    const [id, setId] = useState(0)
     const tableHead = ["Name", "Description", "Action"];
     const [ClassType, setClassType] = useState([])
     const [showModalDetail, setShowModalDetail] = useState(false);

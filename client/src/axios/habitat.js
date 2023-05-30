@@ -1,5 +1,5 @@
 import axios, { Axios } from "axios";
-const URL = "https://zoofeed-api.vercel.app/api/habitats";
+const URL = "https://54.206.202.155:3000/api/habitats";
 
 const getHabitat = async (cb) => {
     try {

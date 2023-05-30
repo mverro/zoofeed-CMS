@@ -7,7 +7,7 @@ const checkFileUpdate = (data, req) => {
       const split = fileName.split("/").slice(0, -1).join("/") + "/";
       const split2 = fileName.split("/");
       fileName = split2[split2.length - 1];
-      if (split === "http://localhost:3000/images/") {
+      if (split === "https://54.206.202.155:3000/images/") {
         fs.unlinkSync(`./public/images/${fileName}`);
       }
     }
@@ -28,9 +28,9 @@ const checkUserDelete = (data) => {
   }
 }
 
-const checkUpload = (tempImage,imageUrl) => {
+const checkUpload = (tempImage, imageUrl) => {
 
-  if (tempImage === 'images/portrait-placeholder.png'){
+  if (tempImage === 'images/portrait-placeholder.png') {
     return
   }
   if (tempImage !== imageUrl) {
@@ -44,14 +44,14 @@ const checkFileDelete = (data) => {
   if (data) {
     let fileName = data.dataValues.imageUrl;
     if (fileName) {
-        fs.unlinkSync(`./public/${fileName}`);
+      fs.unlinkSync(`./public/${fileName}`);
     }
   }
 };
 
 const checkData = (req) => {
-    const fileName = req.file.filename;
-        fs.unlinkSync(`./public/images/${fileName}`);
+  const fileName = req.file.filename;
+  fs.unlinkSync(`./public/images/${fileName}`);
 }
 
 module.exports = { checkFileUpdate, checkFileDelete, checkData, checkUpload, checkUserDelete };
